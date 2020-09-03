@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+
+namespace TripNotes.Models
+{
+  public class Horse
+  {
+    public Horse()
+    {
+      this.Races = new HashSet<HorseRace>();
+    }
+    public int HorseId { get; set; }
+    public string HorseName { get; set; }
+    public ICollection<HorseRace> Races { get; set; }
+
+  }
+}
