@@ -6,6 +6,7 @@ namespace TripNotes.Models
   {
     public virtual DbSet<Horse> Horses { get; set; }
     public DbSet<Race> Races { get; set; }
+    public DbSet<HorseRace> HorseRace { get; set; }
     public DbSet<Pace> Paces { get; set; }
 
     public TripNotesContext(DbContextOptions options) : base(options) { }

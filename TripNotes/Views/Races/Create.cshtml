@@ -6,3 +6,41 @@
 
 <h2>Add a new Race</h2>
 
+@using(Html.BeginForm())
+{
+  <div class="row">
+    <div class="col-md-5 column">
+      @Html.LabelFor(model => model.RaceDate)<br>
+    </div>
+    <div class="col-md-5 column">
+      @Html.TextBoxFor(model => model.RaceDate, new { @type = "date"})<br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 column">
+        @Html.LabelFor(model => model.RaceLength)<br>
+    </div>
+    <div class="col-md-5 column">
+        @Html.TextBoxFor(model => model.RaceLength, new {@class="form-control", required="required"})<br>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-5 column">
+        @Html.LabelFor(model => model.RaceClass)<br>
+    </div>
+    <div class="col-md-5 column">
+        @Html.TextBoxFor(model => model.RaceClass, new {@class="form-control", required="required"})<br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 column">
+      Add a Horse to this Race: @Html.TextBox("SearchString")<br>
+    </div>
+    <div class="col-md-5 column">
+        Find by date: @Html.TextBox("SearchString")
+      <br>    
+      <input type="submit" value="Add Race" /><br>
+    </div>
+  </div>
+}
+

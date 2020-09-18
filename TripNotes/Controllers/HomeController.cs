@@ -10,5 +10,11 @@ namespace TripNotes.Controllers
     {
       _db = db;
     }
+
+    public ActionResult Index()
+    {
+      return View();
+    }
+    
   }
 }

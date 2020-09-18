@@ -13,6 +13,7 @@ namespace TripNotes.Models
     public int RaceId { get; set; }
     public DateTime RaceDate { get; set; }
     public string RaceLength  { get; set; }
+    public string RaceClass { get; set; }
     public string RaceNotes { get; set; }
     public ICollection<HorseRace> Horses { get; set; }
 
