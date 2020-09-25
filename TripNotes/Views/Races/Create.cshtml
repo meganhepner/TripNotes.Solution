@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-5 column">
       @Html.DropDownList("HorseId")<br>
-      <input type="button" value="add dynamic" onclick="DynamicText()" />
+      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
     </div>
   </div>
 
@@ -55,19 +55,9 @@
   </div>
 }
 
+@section scripts{
 <script>
-  function DynamicText() {
-    var division = document.createElement('DIV');
-    division.innerHTML = DynamictextBox("");
-    document.getElementById("divToRepeat").appendChild(division);
-  }
 
-  function DynamictextBox(value){
-    return '<div><input type="text" name="dyntxt" /><input type="button" onclick="ReTextBox(this)" value="Remove" /></div>';
-  }
-  function ReTextBox(div) {
-    document.getElementById("divToRepeat").removeChild(div.parentNode.parentNode);
-  }
-</script> 
 
-<p>@Html.ActionLink("Add new Horse", "Create", "Horses")</p> 
+
+}
