@@ -41,7 +41,7 @@
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
     <div class="col-md-5 column">
-      @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br>
+      @Html.DropDownList("HorseId")<br>
       <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
     </div>
   </div>
@@ -55,10 +55,48 @@
   </div>
 }
 
+<script id="template" type="text/template">  
+  <div class="row" id="divToRepeat">
+    <div class="col-md-5 column">
+      @Html.Label("Add A Horse To This Race: ")<br>
+    </div>
+    <div class="col-md-5 column">
+      @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br>
+      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
+    </div>
+  </div> 
+</script>
+
 @section scripts{
-  @Html.Partial("~/Views/Shared/_AddHorse.cshtml", Model);
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".btnAdd").click(function() {
+      $("#divToRepeat").append($("#template").html());
+    });
+   });
+</script>
 }
     @* var td1 = '<div class="col-md-5 column">@Html.DropDownList("HorseId")<br></div>';
             var td1 = '<div>@Html.DropDownList("HorseId")<div>'; 
    
       $("divToRepeat").append(td1);  *@
+
+
+
+  @* <div class="row" id="divToRepeat">
+    <div class="col-md-5 column">
+      @Html.Label("Add A Horse To This Race: ")<br>
+    </div>
+    <div class="col-md-5 column">
+      @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br>
+      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
+    </div>
+  </div> *@
+
+      @* $(document).ready(function(){
+      $(".btnAdd").click(function() {
+        $("divToRepeat").append($("#template").clone());
+      });
+    }); *@
+@* 
+    @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br> *@
