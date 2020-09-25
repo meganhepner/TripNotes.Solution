@@ -106,10 +106,10 @@ namespace TripNotes.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddHorse(int id)
+    public ActionResult AddHorse(int id, string searchString)
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      ViewBag.Horses = _db.Horses;
+      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
       return View(thisRace);
     }
 

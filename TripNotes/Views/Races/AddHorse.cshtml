@@ -1,0 +1,20 @@
+@model TripNotes.Models.Race
+
+@{
+  Layout = "_Layout";
+}
+
+<h2>Add a Horse To This Race</h2>
+
+<h4>@Html.DisplayFor(model => model.RaceDate)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RaceId)
+
+  @Html.Label("Select Horse")
+  @* @Html.DropDownList("MachineId") *@
+    @Html.DropDownList("HorseId")
+
+  <input type="submit" value="Save" />
+}

@@ -5,5 +5,8 @@
 }
 
 <h1>Race Details<h1>
+   <h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
+  <p>@Html.ActionLink("Add Horse To Race", "AddHorse", new { id = Model.RaceId })</p>
+  <p>@Html.ActionLink("Delete Race", "Delete", new { id = Model.RaceId })</p> 
 <hr/>
 
