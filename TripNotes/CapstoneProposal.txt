@@ -1,0 +1,27 @@
+Name of Student: Megan Hepner
+Name of Project: Trip Notes
+Project's Purpose or Goal: (What will it do for users?) For use by fans of horse racing. It will organize notes and data collected by the user and present it in an attractive UI.
+List the absolute minimum features the project requires to meet this purpose or goal:
+-User can input horse names. 
+-User can create a race by inputting race info and queuing up the horses (by name) that will be in that race
+-Users can make notes on the horses in the race
+-Users can look up all previous notes by horse
+
+What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.
+-C#/.NET
+-ASP.NET MVC Core
+-Entity
+-MySql
+-Chart.js
+-Bootstrap
+-probably some JavaScript/Blazer?
+-React??
+
+If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.
+-Build out graphs to enchance visual appeal
+-Include pace calcualations... user enters Beaten Lengths, app computes Sartin Array (a specific style of horse racing stats), then app saves this array into Pace Table
+-Pace calculations can be picked up from past performances to compare horses in a future race
+-App highlights positive indicators in pace comparisons
+
+What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
+-Pandas Dataframes
