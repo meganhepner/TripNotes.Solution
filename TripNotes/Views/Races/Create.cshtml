@@ -54,7 +54,7 @@
     </div>
   </div>
 
-   <input class="test btn btn-default" type="button" name="name" value="Add" />
+   <input class="test btn btn-default" type="button" name="name" value="Test" />
 }
 
 <script id="template" type="text/template"> 
@@ -73,10 +73,16 @@
     });
 
     $(".test").click(function() {
-      $(".horse-data").each(function(){
-      alert("Another div");
+
+      var data = [];
+
+      $(".horse-data").each(function() {
+        var Horse = $(this).find("HorseId option:checked").val();
+        console.log(Horse);
+        data.push(Horse);
     }); 
-    })
+    console.log(data);
+    });
   
 
   });
