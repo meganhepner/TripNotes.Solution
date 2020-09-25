@@ -43,7 +43,7 @@
     <div class="col-md-5 column">
       @Html.DropDownList("HorseId")<br>
       <input type="button" id="btnAdd" value="Add Another Horse" />
-      <br> 
+    </div>
   </div>
 
   <div class="row">
@@ -55,13 +55,15 @@
   </div>
 }
 
-@* <script>
-  $(function() {
-    $('#btnAdd').click(function (e) {
-      var itemIndex = $('#container input.iHidden').length;
-      e.preventDefault();
-      var newItem = $(<div>)
-    })
-  })
-</script>
-<p>@Html.ActionLink("Add new Horse", "Create", "Horses")</p> *@
+<script>
+    $(function () {
+        $("#btnAdd").click(function (e) {
+            var horseIndex = $("#container input.iHidden").length;
+            e.preventDefault();
+            var newItem = $("<tr><td><input id='addHorse" + horseIndex + "__Id' type='hidden' value='' class='iHidden'  name='Interests[" + horseIndex + "].Id' /><input type='text' id='Interests_" + horseIndex + "__InterestText' name='Interests[" + horseIndex + "].InterestText'/></td></tr>");
+            $("#container").append(newItem);
+        });
+    });
+</script> 
+
+<p>@Html.ActionLink("Add new Horse", "Create", "Horses")</p> 
