@@ -37,7 +37,7 @@
   </div>
   
   <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
-  <div class="row" id="divToRepeat">
+  <div class="row horse-data" id="divToRepeat">
     <div class="col-md-5 column">
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
@@ -53,9 +53,12 @@
     <input type="submit" value="Add Race" /><br>
     </div>
   </div>
+
+   <input class="test btn btn-default" type="button" name="name" value="Add" />
 }
 
-<script id="template" type="text/template">  
+<script id="template" type="text/template"> 
+   <div class="row horse-data" >
     <div class="col-md-5 column">
       @Html.DropDownList("HorseId")<br>
     </div>
@@ -69,34 +72,20 @@
       $("#divToRepeat").append($("#template").html());
     });
 
-   });
+    $(".test").click(function() {
+      $(".horse-data").each(function(){
+      alert("Another div");
+    }); 
+    })
+  
+
+  });
+
+
 </script>
 }
-    @* var td1 = '<div class="col-md-5 column">@Html.DropDownList("HorseId")<br></div>';
-            var td1 = '<div>@Html.DropDownList("HorseId")<div>'; 
-   
-      $("divToRepeat").append(td1);  *@
-
-
-    @* function getAllData() {
-      var data = [];
-      $("")
-    } *@
-
-  @* <div class="row" id="divToRepeat">
-    <div class="col-md-5 column">
-      @Html.Label("Add A Horse To This Race: ")<br>
-    </div>
-    <div class="col-md-5 column">
-      @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br>
-      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
-    </div>
-  </div> *@
-
-      @* $(document).ready(function(){
-      $(".btnAdd").click(function() {
-        $("divToRepeat").append($("#template").clone());
-      });
+   @* function getAllData() {
+    var data = [];
+    $("divToRepeat").each(function(){
+      alert("Another div");
     }); *@
-@* 
-    @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br> *@
