@@ -35,14 +35,14 @@
         @Html.TextBoxFor(model => model.RaceClass, new {@class="form-control", required="required"})<br>
     </div>
   </div>
-
+  
+  <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
   <div class="row" id="divToRepeat">
     <div class="col-md-5 column">
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
     <div class="col-md-5 column">
       @Html.DropDownList("HorseId")<br>
-      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
     </div>
   </div>
 
@@ -56,13 +56,8 @@
 }
 
 <script id="template" type="text/template">  
-  <div class="row" id="divToRepeat">
     <div class="col-md-5 column">
-      @Html.Label("Add A Horse To This Race: ")<br>
-    </div>
-    <div class="col-md-5 column">
-      @Html.DropDownList("HorseId", null, htmlAttributes: new { @id ="template" })<br>
-      <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
+      @Html.DropDownList("HorseId")<br>
     </div>
   </div> 
 </script>
@@ -73,6 +68,7 @@
     $(".btnAdd").click(function() {
       $("#divToRepeat").append($("#template").html());
     });
+
    });
 </script>
 }
@@ -82,6 +78,10 @@
       $("divToRepeat").append(td1);  *@
 
 
+    @* function getAllData() {
+      var data = [];
+      $("")
+    } *@
 
   @* <div class="row" id="divToRepeat">
     <div class="col-md-5 column">
