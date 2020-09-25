@@ -37,14 +37,6 @@ namespace TripNotes.Controllers
 
     public ActionResult Create() //removed async for functionality, suggested in this doc https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-3.1
     {
-      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
-
-      // var horses = from m in _db.Horses select m;
-
-      // if (!String.IsNullOrEmpty(searchString)) code for searchBox
-      // {
-      //   horses = horses.Where(s => s.HorseName.Contains(searchString));
-      // }
       return View(); 
     }
 

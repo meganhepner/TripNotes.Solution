@@ -42,28 +42,22 @@
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
     <div class="col-md-5 column">
-      @Html.DropDownList("HorseId")<br>
+      @* @Html.DropDownList("HorseId")<br> *@
+      @Html.TextBox("SearchString")
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-5 column">
-      Find by date: @Html.TextBox("SearchString")
-    <br>    
+  </div>  
     <input type="submit" value="Add Race" /><br>
-    </div>
-  </div>
 
    <input class="test btn btn-default" type="button" name="name" value="Test" />
 }
 
-<script id="template" type="text/template"> 
+@* <script id="template" type="text/template"> 
    <div class="row horse-data" >
     <div class="col-md-5 column">
       @Html.DropDownList("HorseId")<br>
     </div>
   </div> 
-</script>
+</script> *@
 
 @section scripts{
 <script type="text/javascript">

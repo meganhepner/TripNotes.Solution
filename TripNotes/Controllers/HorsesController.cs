@@ -25,7 +25,18 @@ namespace TripNotes.Controllers
     }
 
     [HttpPost]
+        public async Task<IActionResult> Create(string searchString) //removed async for functionality, suggested in this doc https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-3.1
+    {
+      // ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
 
+      // ViewBag.Horses = _db.Horses;
+      var horses = from horse in _db.Horses select horse;
+      if (!string.IsNullOrEmpty(searchString))
+      {
+        horses = horses.Where(horse => horse.HorseName.Contains(searchString));
+      }
+      return View(await horses.ToListAsync()); 
+    }
     public ActionResult Create(Horse horse)
     {
       _db.Horses.Add(horse);
