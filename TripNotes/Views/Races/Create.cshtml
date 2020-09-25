@@ -1,4 +1,5 @@
 @model TripNotes.Models.Race
+@using System.Collections.Generic;
 
 @{
   Layout = "_Layout";
@@ -16,6 +17,7 @@
       @Html.TextBoxFor(model => model.RaceDate, new { @type = "date"})<br>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-5 column">
         @Html.LabelFor(model => model.RaceLength)<br>
@@ -24,7 +26,8 @@
         @Html.TextBoxFor(model => model.RaceLength, new {@class="form-control", required="required"})<br>
     </div>
   </div>
-    <div class="row">
+
+  <div class="row">
     <div class="col-md-5 column">
         @Html.LabelFor(model => model.RaceClass)<br>
     </div>
@@ -32,15 +35,33 @@
         @Html.TextBoxFor(model => model.RaceClass, new {@class="form-control", required="required"})<br>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row" id="divToRepeat">
     <div class="col-md-5 column">
-      Add a Horse to this Race: @Html.TextBox("SearchString")<br>
+      @Html.Label("Add A Horse To This Race: ")<br>
     </div>
     <div class="col-md-5 column">
-        Find by date: @Html.TextBox("SearchString")
-      <br>    
-      <input type="submit" value="Add Race" /><br>
+      @Html.DropDownList("HorseId")<br>
+      <input type="button" id="btnAdd" value="Add Another Horse" />
+      <br> 
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 column">
+      Find by date: @Html.TextBox("SearchString")
+    <br>    
+    <input type="submit" value="Add Race" /><br>
     </div>
   </div>
 }
 
+@* <script>
+  $(function() {
+    $('#btnAdd').click(function (e) {
+      var itemIndex = $('#container input.iHidden').length;
+      e.preventDefault();
+      var newItem = $(<div>)
+    })
+  })
+</script>
+<p>@Html.ActionLink("Add new Horse", "Create", "Horses")</p> *@

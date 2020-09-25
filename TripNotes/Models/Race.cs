@@ -16,9 +16,6 @@ namespace TripNotes.Models
     public string RaceClass { get; set; }
     public string RaceNotes { get; set; }
     public ICollection<HorseRace> Horses { get; set; }
-
-    public virtual ICollection<Pace> Paces { get; set; } //one race to many paces? paces viewed through lens of race?
-
-
+  public virtual ICollection<Pace> Paces { get; set; } //one race to many paces? paces viewed through lens of race?
   }
 }

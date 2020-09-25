@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using TripNotes.Models;
+using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace TripNotes.Controllers
 {
@@ -30,13 +32,20 @@ namespace TripNotes.Controllers
           races = races.OrderByDescending(race => race.RaceDate);
           break;
       }
-      return View();
+      return View(races.ToList());
     }
 
-    public ActionResult Create()
+    public ActionResult Create() //removed async for functionality, suggested in this doc https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-3.1
     {
-      ViewBag.Horses = _db.Horses;
-      return View();
+      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
+
+      // var horses = from m in _db.Horses select m;
+
+      // if (!String.IsNullOrEmpty(searchString)) code for searchBox
+      // {
+      //   horses = horses.Where(s => s.HorseName.Contains(searchString));
+      // }
+      return View(); 
     }
 
     [HttpPost]

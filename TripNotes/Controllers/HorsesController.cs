@@ -30,7 +30,7 @@ namespace TripNotes.Controllers
     {
       _db.Horses.Add(horse);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return View();
     }
 
     public ActionResult Details(int id)
