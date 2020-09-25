@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Trip Notes</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @RenderSection("Scripts", false)
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="~/css/styles.css" type="text/css">
   </head>
@@ -13,6 +15,7 @@
         </div>
         <div class="col-md-10">
           @RenderBody()
+
         </div>
       </div>
     </div>
