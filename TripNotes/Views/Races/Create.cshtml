@@ -56,14 +56,7 @@
 }
 
 @section scripts{
-<script type="text/javascript">
-
-    $(document).ready(function(){
-      $(".btnAdd").click(function() {
-        $("divToRepeat").append($("#template").clone());
-      });
-    });
-</script>
+  @Html.Partial("~/Views/Shared/_AddHorse.cshtml", Model);
 }
     @* var td1 = '<div class="col-md-5 column">@Html.DropDownList("HorseId")<br></div>';
             var td1 = '<div>@Html.DropDownList("HorseId")<div>'; 
