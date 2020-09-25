@@ -55,15 +55,18 @@
   </div>
 }
 
-@section Scripts{
-  <script>
-    $(function () {
-      alert("Test"); 
+@section scripts{
+<script type="text/javascript">
+
+    $(document).ready(function(){
+      $(".btnAdd").click(function() {
+      var td1= '<div>Testing</div>';
+      $("divToRepeat").append(td1);
+
     });
-  </script>
+
+</script>
+
 }
     @* var td1 = '<div class="col-md-5 column">@Html.DropDownList("HorseId")<br></div>'; *@
-      @* $(".btnAdd").click(function() {
-          var td1 = '<td>@Html.DropDownList("HorseId")</td>';
-    $("divToRepeat").append(td1);
-  }); *@
+         @* var td1 = '<div>@Html.DropDownList("HorseId")<div>'; *@
