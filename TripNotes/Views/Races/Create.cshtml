@@ -22,7 +22,7 @@
         @Html.LabelFor(model => model.RaceLength)<br>
     </div>
     <div class="col-md-5 column">
-        @Html.TextBoxFor(model => model.RaceLength, new {@class="form-control", required="required"})<br>
+        @Html.TextBoxFor(model => model.RaceLength, new { @class="form-control", required="required" })<br>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
         @Html.LabelFor(model => model.RaceClass)<br>
     </div>
     <div class="col-md-5 column">
-        @Html.TextBoxFor(model => model.RaceClass, new {@class="form-control", required="required"})<br>
+        @Html.TextBoxFor(model => model.RaceClass, new { @class="form-control", required="required" })<br>
     </div>
   </div>
   
@@ -46,7 +46,7 @@
     </div>
   </div>  
   
-    <input type="submit" value="Add Race" /><br>
+    <input type="submit" id="btnSubmit" value="Add Race" /><br>
 
     <input class="test btn btn-default" type="button" name="name" value="Test" />
 }
@@ -66,17 +66,35 @@
       $("#divToRepeat").append($("#template").html());
     });
 
-    $(".test").click(function() {
-
+    function getAllData() {
       var data = [];
-
       $(".horse-data").each(function() {
         var Horse = $(this).val();
-        console.log(Horse);
-        data.push(Horse);
-    }); 
-    console.log(data);
-    });
+        var alldata = {
+          'HorseId' : Horse,
+        }
+        data.push(alldata);
+      }); 
+      console.log(data);
+      return data;
+      };
+
+      $('#btnSubmit').click(function () {
+        var data = JSON.stringify(getAllData());
+        $.ajax({
+            url: '/HorseRace/SaveData',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ 'horses ': data }),
+            success: function () {
+                alert("Data Added Successfully");
+            },
+            error: function () {
+                alert("Error while inserting data");
+            }
+        });
+      })
   
 
   });

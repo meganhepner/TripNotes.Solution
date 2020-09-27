@@ -3,6 +3,11 @@ using TripNotes.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+// using System.Text.Json;
+// using System.Text.Json.Serialization;
+
 
 
 namespace TripNotes.Controllers
@@ -34,23 +39,44 @@ namespace TripNotes.Controllers
       return View(races.ToList());
     }
 
-    public ActionResult Create() //removed async for functionality, suggested in this doc https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-3.1
+    public ActionResult Create() 
     {
       ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
       return View(); 
     }
 
     [HttpPost]
-    public ActionResult Create(Race race, int HorseId)
+    public ActionResult Create(Race race, int[] data)
     {
       _db.Races.Add(race);
-      if (HorseId !=0)
+      foreach (int element in data)
       {
-        _db.HorseRace.Add(new HorseRace() { HorseId = HorseId, RaceId = race.RaceId});
+      _db.HorseRace.Add(new HorseRace() { HorseId = data[element], RaceId = race.RaceId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+//     public JsonResult SaveData(string horses)//WebMethod to Save the data  
+// {
+//     try
+//     {
+//         var serializeData = JsonConvert.DeserializeObject<List<GatePass>>(horses);
+
+//         foreach (var data in serializeData)
+//         {
+//             db.GatePasses.Add(data);
+//         }
+
+//         db.SaveChanges();
+//     }
+//     catch (Exception)
+//     {
+//         return Json("fail");
+//     }
+
+//     return Json("success");
+// }
 
     public ActionResult Details(int id)
     {
