@@ -1,5 +1,4 @@
 @model TripNotes.Models.Race
-@using System.Collections.Generic;
 
 @{
   Layout = "_Layout";
@@ -37,25 +36,25 @@
   </div>
   
   <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
-  <div class="row horse-data" id="divToRepeat">
+
+  <div class="row" id="divToRepeat">
     <div class="col-md-5 column">
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
     <div class="col-md-5 column">
- 
-      @Html.DropDownList("HorseId")<br>
-      @* @Html.TextBox("SearchString") *@
+      @Html.DropDownList( "HorseId", ViewBag.Horses, "HorseName",  new { @class="horse-data"})<br>
     </div>
   </div>  
+  
     <input type="submit" value="Add Race" /><br>
 
-   <input class="test btn btn-default" type="button" name="name" value="Test" />
+    <input class="test btn btn-default" type="button" name="name" value="Test" />
 }
 
 <script id="template" type="text/template"> 
-   <div class="row horse-data" >
+   <div class="row" >
     <div class="col-md-5 column">
-      @Html.DropDownList("HorseId")<br>
+      @Html.DropDownList( "HorseId", ViewBag.Horses, "Horse Name", new { @class="horse-data"})<br>
     </div>
   </div> 
 </script>
@@ -72,7 +71,7 @@
       var data = [];
 
       $(".horse-data").each(function() {
-        var Horse = $(this).find("HorseId option:checked").val();
+        var Horse = $(this).val();
         console.log(Horse);
         data.push(Horse);
     }); 

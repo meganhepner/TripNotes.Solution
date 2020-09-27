@@ -109,7 +109,7 @@ namespace TripNotes.Controllers
     public ActionResult AddHorse(int id, string searchString)
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
+      ViewBag.HorseId = new SelectList(_db.Horses);
       return View(thisRace);
     }
 
