@@ -1,0 +1,31 @@
+@model TripNotes.Models.Race
+
+@{
+  Layout = "_Layout";
+}
+
+<h1>Edit this Race : @Html.DisplayFor(model => model.RaceDate)</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RaceId)
+
+  @Html.LabelFor(model => model.RaceDate)
+  @Html.EditorFor(model => model.RaceDate, new {@class="form-control", required="required"})
+  <br>
+  @Html.LabelFor(model => model.RaceLength)
+  @Html.EditorFor(model => model.RaceLength, new {@class="form-control", required="required"})
+  <br>
+  @Html.LabelFor(model => model.RaceClass)
+  @Html.EditorFor(model => model.RaceClass, new {@class="form-control", required="required"})
+  <br>
+  @Html.LabelFor(model => model.RaceNotes)
+  @Html.EditorFor(model => model.RaceNotes, new {@class="form-control", required="required"})
+
+  @Html.Label("Add Horse To Race")
+  @Html.DropDownList("HorseId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back To Race Details", "Details", new { id = Model.RaceId })</p> 

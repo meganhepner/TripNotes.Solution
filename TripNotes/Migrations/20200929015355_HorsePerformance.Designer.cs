@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TripNotes.Models;
 
 namespace TripNotes.Migrations
 {
     [DbContext(typeof(TripNotesContext))]
-    partial class TripNotesContextModelSnapshot : ModelSnapshot
+    [Migration("20200929015355_HorsePerformance")]
+    partial class HorsePerformance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -15,9 +15,14 @@ namespace TripNotes.Controllers
     {
       _db = db;
     }
-    public ActionResult Index()
+    public ActionResult Index(string searchString)
     {
-      return View();
+      var horses = from horse in _db.Horses select horse;
+      if (!String.IsNullOrEmpty(searchString))
+      {
+          horses = horses.Where(horse => horse.HorseName.Contains(searchString));
+      }
+      return View(horses.ToList());
     }
 
     public ActionResult Create()
@@ -35,10 +40,17 @@ namespace TripNotes.Controllers
 
     public ActionResult Details(int id)
     {
+      ViewBag.RaceInfo = _db.HorseRace;
       var thisHorse = _db.Horses
       .Include(horse => horse.Races)
       .ThenInclude(join => join.Race)
       .FirstOrDefault(horse => horse.HorseId == id);
+      return View(thisHorse);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisHorse = _db.Horses.FirstOrDefault(horses => horses.HorseId == id);
       return View(thisHorse);
     }
 
@@ -61,7 +73,7 @@ namespace TripNotes.Controllers
       return View(thisHorse);
     } 
 
-    [HttpPost]
+    [HttpPost, ActionName("Delete")]
 
     public ActionResult DeleteConfirmed(int id)
     {
@@ -75,7 +87,7 @@ namespace TripNotes.Controllers
 
     public ActionResult DeleteRace(int joinId)
     {
-      var joinEntry = _db.HorseRace.FirstOrDefault(entry => entry.HorseRaceId == joinId);
+      var joinEntry = _db.HorseRace.FirstOrDefault(entry => entry.HorseRaceId == joinId); //Where, not FirstOrDefault?
       _db.HorseRace.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");

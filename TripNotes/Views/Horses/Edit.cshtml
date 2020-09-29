@@ -1,0 +1,20 @@
+@model TripNotes.Models.Horse
+
+@{
+  Layout = "_Layout";
+}
+
+<h1>Edit this Horse : @Html.DisplayFor(model => model.HorseName)</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.HorseId)
+
+  @Html.LabelFor(model => model.HorseName)
+  @Html.EditorFor(model => model.HorseName, new {@class="form-control", required="required"})
+  <br>
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back To Horse Details", "Details", new { id = Model.HorseId })</p> 

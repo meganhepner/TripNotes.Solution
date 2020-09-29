@@ -39,45 +39,23 @@ namespace TripNotes.Controllers
       return View(races.ToList());
     }
 
-    public ActionResult Create() 
+    public ActionResult Create()
     {
       ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
-      return View(); 
+      return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Race race, int[] data)
+    public ActionResult Create(Race race, int[] horseData)
     {
       _db.Races.Add(race);
-      foreach (int element in data)
+      foreach (int element in horseData)
       {
-      _db.HorseRace.Add(new HorseRace() { HorseId = data[element], RaceId = race.RaceId});
+        _db.HorseRace.Add(new HorseRace() { HorseId = element, RaceId = race.RaceId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-//     public JsonResult SaveData(string horses)//WebMethod to Save the data  
-// {
-//     try
-//     {
-//         var serializeData = JsonConvert.DeserializeObject<List<GatePass>>(horses);
-
-//         foreach (var data in serializeData)
-//         {
-//             db.GatePasses.Add(data);
-//         }
-
-//         db.SaveChanges();
-//     }
-//     catch (Exception)
-//     {
-//         return Json("fail");
-//     }
-
-//     return Json("success");
-// }
-
     public ActionResult Details(int id)
     {
       var thisRace = _db.Races
@@ -132,15 +110,14 @@ namespace TripNotes.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddHorse(int id, string searchString)
+    public ActionResult AddHorse(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      ViewBag.HorseId = new SelectList(_db.Horses);
+      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
       return View(thisRace);
     }
 
     [HttpPost]
-
     public ActionResult AddHorse(Horse horse, int RaceId)
     {
       if(RaceId != 0)

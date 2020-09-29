@@ -7,4 +7,55 @@
 <h1>Horse Details<h1>
 <hr/>
 
+<h3>@Html.Label("Horse Name "): @Html.DisplayFor(model => model.HorseName)</h3>
+<br>
+
+@if(@Model.Races.Count == 0)
+{
+  <p>No records of races in which this horse has been entered</p>
+}
+else
+{
+  <h2>Races:</h2>
+
+  <table class="table">
+    <tr>
+        <th>
+            Race Date
+        </th>
+        <th>
+            Race Comments
+        </th>
+        <th>
+            Horse Comments
+        </th>
+        <th>
+            Star
+        </th>
+    </tr>
+    
+  @foreach (var join in Model.Races)
+  {
+    <tr>
+      <td>
+        @Html.ActionLink($"{@join.Race.RaceDate}", "Details", "Race")
+      </td>
+      <td>
+        @join.Race.RaceNotes
+      </td>
+      <td>
+        @join.HorseNotes
+      </td>
+      <td>
+        @join.HorsePerformance
+      </td>
+    </tr>
+  }
+  </table>
+}
+
+<p>@Html.ActionLink("Edit Horse", "Edit", new { id = Model.HorseId })</p>
+<p>@Html.ActionLink("Delete Horse", "Delete", new { id = Model.HorseId })</p> 
+
+
 

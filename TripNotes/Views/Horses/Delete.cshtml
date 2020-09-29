@@ -1,0 +1,15 @@
+@model TripNotes.Models.Horse
+
+@{
+  Layout = "_Layout";
+}
+
+<h2>Are you sure you want to delete this horse?</h2>
+
+@Html.DisplayName("Horse Name"): @Html.DisplayFor(model => model.HorseName)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back To Horse Details", "Details", new { id = Model.HorseId })</p>

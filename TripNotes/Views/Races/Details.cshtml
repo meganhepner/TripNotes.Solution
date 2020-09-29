@@ -5,8 +5,34 @@
 }
 
 <h1>Race Details<h1>
-   <h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
+<h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
+<h3>@Html.DisplayFor(model => model.RaceLength)</h3>
+<h3>@Html.DisplayFor(model => model.RaceClass)</h3>
+<h3>@Html.DisplayFor(model => model.RaceNotes)</h3>
+
+
+  @if(@Model.Horses.Count == 0)
+{
+  <p>This race has no horses assigned to it</p>
+}
+else
+{
+  <h2>Horses :</h2>
+  <ul>
+  @foreach(var join in Model.Horses)
+  { 
+    <li>@join.Horse.HorseName</li>
+    @using (Html.BeginForm("DeleteHorse", "Horses"))
+    {
+      @Html.Hidden("joinId", @join.HorseRaceId)
+      @* <input type="submit" value="Delete"/> *@
+    }
+  }
+</ul>
+}
   <p>@Html.ActionLink("Add Horse To Race", "AddHorse", new { id = Model.RaceId })</p>
+  <p>@Html.ActionLink("Edit Race", "Edit", new { id = Model.RaceId })</p>
   <p>@Html.ActionLink("Delete Race", "Delete", new { id = Model.RaceId })</p> 
-<hr/>
+
+
 

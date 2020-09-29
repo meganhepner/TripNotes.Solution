@@ -12,8 +12,7 @@ namespace TripNotes.Models
     public int PaceId { get; set; }
     public DateTime RaceDate { get; set; }
     public string RaceLength  { get; set; }
-
-     public int RaceId { get; set; }
+    public int RaceId { get; set; }
     public virtual Race Race { get; set; }
     // public ICollection<HorsePace> Horses { get; set; }
 

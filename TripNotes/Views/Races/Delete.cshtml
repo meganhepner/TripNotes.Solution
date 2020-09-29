@@ -1,0 +1,15 @@
+@model TripNotes.Models.Race
+
+@{
+  Layout = "_Layout";
+}
+
+<h2>Are you sure you want to delete this race?</h2>
+
+@Html.DisplayName("Race Date"): @Html.DisplayFor(model => model.RaceDate)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back To Race Details", "Details", new { id = Model.RaceId })</p>

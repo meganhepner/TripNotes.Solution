@@ -37,49 +37,70 @@
   
   <input class="btnAdd btn btn-default" type="button" name="name" value="Add" />
 
-  <div class="row" id="divToRepeat">
+  <div class="row">
     <div class="col-md-5 column">
       @Html.Label("Add A Horse To This Race: ")<br>
     </div>
-    <div class="col-md-5 column">
-      @Html.DropDownList( "HorseId", ViewBag.Horses, "HorseName",  new { @class="horse-data"})<br>
-    </div>
+
+    <div class="col-md-5 column" id="fields"></div>
   </div>  
   
     <input type="submit" id="btnSubmit" value="Add Race" /><br>
 
     <input class="test btn btn-default" type="button" name="name" value="Test" />
+
+    <div style="color:blue"><b>Data:</b> @ViewBag.Data</div>
+
+
 }
 
-<script id="template" type="text/template"> 
-   <div class="row" >
-    <div class="col-md-5 column">
-      @Html.DropDownList( "HorseId", ViewBag.Horses, "Horse Name", new { @class="horse-data"})<br>
-    </div>
-  </div> 
-</script>
+  <script id="template" type="text/template"> 
+    <div class="row" >
+      <div class="col-md-5 column" id="fields">
+        @Html.DropDownList( "HorseId", ViewBag.HorseId, "Horse Name", new { @class="horseData"})<br>
+      </div>
+    </div> 
+  </script>
 
-@section scripts{
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".btnAdd").click(function() {
-      $("#divToRepeat").append($("#template").html());
-    });
+  @section scripts{
+    <script type="text/javascript">
+      $(document).ready(function(){
+      
+        $(".btnAdd").click(function() {
+          $("#fields").append($("#template").html());
+        });
 
-    function getAllData() {
-      var data = [];
-      $(".horse-data").each(function() {
-        var Horse = $(this).val();
-        var alldata = {
-          'HorseId' : Horse,
-        }
-        data.push(alldata);
-      }); 
-      console.log(data);
-      return data;
-      };
-
+        $(".test").click(function getAllData() {
+          var array = [];
+          $(".horseData").each(function() {
+            var Horse = $(this).val();
+            array.push(Horse);
+          }); 
+          console.log(array);
+          return array;
+          });
+      
       $('#btnSubmit').click(function () {
+          var data = JSON.stringify(getAllData());
+          $.ajax({
+
+          }); 
+          return data;
+          }); 
+
+  }); 
+      </script>
+  }
+
+  
+        @* $('#btnSubmit').click(function () {
+          var data = getAllData();
+          }); 
+
+
+
+    
+      @* $('#btnSubmit').click(function () {
         var data = JSON.stringify(getAllData());
         $.ajax({
             url: '/HorseRace/SaveData',
@@ -94,16 +115,5 @@
                 alert("Error while inserting data");
             }
         });
-      })
+      }) *@
   
-
-  });
-
-
-</script>
-}
-   @* function getAllData() {
-    var data = [];
-    $("divToRepeat").each(function(){
-      alert("Another div");
-    }); *@
