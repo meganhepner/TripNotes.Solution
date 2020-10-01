@@ -6,7 +6,6 @@ namespace TripNotes.Models
     public int HorseId { get; set; }
     public int RaceId { get; set; }
     public string HorseNotes { get; set; }
-
     public int HorsePerformance { get; set; }
     public Horse Horse { get; set; }
     public Race Race { get; set; }

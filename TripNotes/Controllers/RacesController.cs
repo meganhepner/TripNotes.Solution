@@ -5,10 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-// using System.Text.Json;
-// using System.Text.Json.Serialization;
-
-
+using Newtonsoft.Json;
 
 namespace TripNotes.Controllers
 {
@@ -38,7 +35,6 @@ namespace TripNotes.Controllers
       }
       return View(races.ToList());
     }
-
     public ActionResult Create()
     {
       ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
@@ -46,15 +42,18 @@ namespace TripNotes.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Race race, int[] horseData)
+    public JsonResult SaveData(string race, string horses)
     {
-      _db.Races.Add(race);
-      foreach (int element in horseData)
+      string [] HorseIdArray = horses.Split(",");
+      var serializedata = JsonConvert.DeserializeObject<Race>(race);
+      _db.Races.Add(serializedata);
+      foreach (var element in HorseIdArray)
       {
-        _db.HorseRace.Add(new HorseRace() { HorseId = element, RaceId = race.RaceId });
+        var ThisHorseId = int.Parse(element);
+        _db.HorseRace.Add(new HorseRace() { HorseId = ThisHorseId, RaceId = serializedata.RaceId});
       }
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return Json("success");
     }
     public ActionResult Details(int id)
     {
@@ -64,7 +63,6 @@ namespace TripNotes.Controllers
       .FirstOrDefault(race => race.RaceId == id);
       return View(thisRace);
     }
-
     public ActionResult Edit(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(races => races.RaceId == id);

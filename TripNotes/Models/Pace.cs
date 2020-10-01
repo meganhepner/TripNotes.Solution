@@ -1,21 +1,27 @@
-using System.Collections.Generic;
-using System;
+// using System.Collections.Generic;
+// using System;
 
-namespace TripNotes.Models
-{
-  public class Pace
-  {
-    // public Pace()
-    // {
-    //   this.Horses = new HashSet<HorsePace>();
-    // }
-    public int PaceId { get; set; }
-    public DateTime RaceDate { get; set; }
-    public string RaceLength  { get; set; }
-    public int RaceId { get; set; }
-    public virtual Race Race { get; set; }
-    // public ICollection<HorsePace> Horses { get; set; }
-
-
-  }
-}
+// namespace TripNotes.Models
+// {
+//   public class Pace
+//   {
+//     public Pace()
+//     {
+//       this.Horses = new HashSet<Horse>(); // set up as one note, many races and horses
+//       this.Races = new HashSet<Race>();
+//     }
+//     public int PaceId { get; set; }
+//     public int RaceId { get; set; }
+//     public int HorseId { get; set; }
+//     public int FirstFR { get; set; }
+//     public int SecondFR { get; set; }
+//     public int ThirdFR { get; set; }
+//     public int AP { get; set; }
+//     public int EP { get; set; }
+//     public int SP { get; set; }
+//     public int FX { get; set; }
+//     public int PercentEarly { get; set; }
+//     public ICollection<Horse> Horses { get; set; }
+//     public virtual ICollection<Race> Races { get; set; }
+//   }
+// }
