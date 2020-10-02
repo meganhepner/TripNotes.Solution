@@ -30,6 +30,7 @@ else
   }
 </ul>
 }
+  <p>@Html.ActionLink("Add TripNotes for this Race", "AddNotes", new { id = Model.RaceId })</p>
   <p>@Html.ActionLink("Add Horse To Race", "AddHorse", new { id = Model.RaceId })</p>
   <p>@Html.ActionLink("Edit Race", "Edit", new { id = Model.RaceId })</p>
   <p>@Html.ActionLink("Delete Race", "Delete", new { id = Model.RaceId })</p> 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TripNotes.ViewModels;
 
 namespace TripNotes.Controllers
 {
@@ -53,6 +54,7 @@ namespace TripNotes.Controllers
         _db.HorseRace.Add(new HorseRace() { HorseId = ThisHorseId, RaceId = serializedata.RaceId});
       }
       _db.SaveChanges();
+    
       return Json("success");
     }
     public ActionResult Details(int id)
@@ -66,7 +68,7 @@ namespace TripNotes.Controllers
     public ActionResult Edit(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(races => races.RaceId == id);
-      ViewBag.Horses = _db.Horses;
+      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
       return View(thisRace);
     }
 
@@ -125,5 +127,16 @@ namespace TripNotes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddNote(int id)
+    {
+      var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
+      HorseRaceViewModel horseRaceViewModel = new HorseRaceViewModel();
+      {
+        
+      }
+      return View(thisRace);
+    }
+
   }
 }
