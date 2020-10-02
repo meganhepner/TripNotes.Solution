@@ -38,7 +38,10 @@ namespace TripNotes.Controllers
     }
     public ActionResult Create()
     {
-      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
+      var horsesQuery = from d in _db.Horses
+                          orderby d.HorseName
+                          select d;
+      ViewBag.HorseId = new SelectList(horsesQuery.AsNoTracking(), "HorseId", "HorseName");
       return View();
     }
 
@@ -68,7 +71,10 @@ namespace TripNotes.Controllers
     public ActionResult Edit(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(races => races.RaceId == id);
-      ViewBag.HorseId = new SelectList(_db.Horses, "HorseId", "HorseName");
+      var horsesQuery = from d in _db.Horses
+                          orderby d.HorseName
+                          select d;
+      ViewBag.HorseId = new SelectList(horsesQuery.AsNoTracking(), "HorseId", "HorseName");
       return View(thisRace);
     }
 
@@ -131,11 +137,9 @@ namespace TripNotes.Controllers
     public ActionResult AddNote(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      AddNotesViewModel addNotesViewModel = new AddNotesViewModel();
-      {
-        // var Race = _db.Races.Get(thisRace);
-      }
-      return View(addNotesViewModel);
+      var viewModel = new AddNotesViewModel();
+      viewModel.Races = _db.Races;
+      return View(viewModel);
     }
     [HttpPost]
     public ActionResult AddNote(AddNotesViewModel addNotesViewModel)
