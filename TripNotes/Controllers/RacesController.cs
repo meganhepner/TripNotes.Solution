@@ -131,11 +131,17 @@ namespace TripNotes.Controllers
     public ActionResult AddNote(int id)
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      HorseRaceViewModel horseRaceViewModel = new HorseRaceViewModel();
+      AddNotesViewModel addNotesViewModel = new AddNotesViewModel();
       {
-        
+        // var Race = _db.Races.Get(thisRace);
       }
-      return View(thisRace);
+      return View(addNotesViewModel);
+    }
+    [HttpPost]
+    public ActionResult AddNote(AddNotesViewModel addNotesViewModel)
+    {
+  
+      return RedirectToAction("Index");
     }
 
   }
