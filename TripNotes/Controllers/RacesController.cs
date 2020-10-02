@@ -41,7 +41,7 @@ namespace TripNotes.Controllers
       var horsesQuery = from d in _db.Horses
                           orderby d.HorseName
                           select d;
-      ViewBag.HorseId = new SelectList(horsesQuery.AsNoTracking(), "HorseId", "HorseName");
+      ViewBag.HorseId = new SelectList(horsesQuery, "HorseId", "HorseName");
       return View();
     }
 
@@ -138,7 +138,10 @@ namespace TripNotes.Controllers
     {
       var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
       var viewModel = new AddNotesViewModel();
-      viewModel.Races = _db.Races;
+      // viewModel.Races = _db.Races
+      // .Include(i => i.HorseRace)
+      // .ThenInclude(join => join.Horse)
+      // .FirstOrDefault(race => race.RaceId == id);
       return View(viewModel);
     }
     [HttpPost]
