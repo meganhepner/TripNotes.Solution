@@ -21,18 +21,18 @@ else
   <ul>
   @foreach(var join in Model.Horses)
   { 
-    @* <li>@join.Horse.HorseName</li> *@
-    <div class ="notes">
-    @using (Html.BeginForm("DeleteHorse", "Horses"))
+    @using (Html.BeginForm("AddNotes", "Horses"))
     {
+      <div class ="notes">
       @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
       <li>@join.Horse.HorseName</li>
       <label for="horseNotes">Notes</label>
       <input type="text" name="horseNotes" class="horseNotes"><br>
       <label for="horsePerformance">Performance</label>
       <input type="text" name="horsePerformance" class="horsePerformance"><br>
+      </div>
     }
-    </div>
+  
   }
   <input class="test btn btn-default" type="button" name="name" value="Test" />
   <input type="submit" id="btnSubmit" value="Save Notes" /><br>
@@ -44,27 +44,25 @@ else
     <script type="text/javascript">
       $(document).ready(function(){
 
-      $(".test").click(function getAllHorseRaceData(){
+        function getAllHorseRaceData(){
             var alldata = [];
             $(".notes").each(function() {
               var horseRace = {};
-              horseRace.Id = $(".joinId ").val();
-              horseRace.RaceNotes = $(".horseNotes").val();
-              horseRace.HorsePerformance = $(".horsePerformance").val();
-              console.log(horseRace);
-            alldata.push(horseRace);
+              horseRace.Id = $(this).find(".joinId ").val();
+              horseRace.RaceNotes = $(this).find(".horseNotes").val();
+              horseRace.HorsePerformance = $(this).find(".horsePerformance").val();
+              alldata.push(horseRace);
             });
-          console.log(alldata);
           return alldata;
-        });
-   
+        };
+
         $('#btnSubmit').click(function () {
-          var race = JSON.stringify(getAllHorseRaceData());
-  
+          var data = JSON.stringify(getAllHorseRaceData());
+          console.log(data);
           $.ajax({
-              url: '/Races/SaveData',
+              url: '/Races/AddNotes',
               type: 'POST',
-              data: { horses: commaSeparatedIds, race:  race },
+              data: { horseRace: data },
           });
         });
       }); 
