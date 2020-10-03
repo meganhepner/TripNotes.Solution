@@ -15,8 +15,8 @@ namespace TripNotes.Models
     public string RaceLength  { get; set; }
     public string RaceClass { get; set; }
     public string RaceNotes { get; set; }
-    public ICollection<HorseRace> HorseRaces { get; set; }
-    public ICollection<HorseRace> Horses { get; set; }
+    // public ICollection<HorseRace> HorseRaces { get; set; }
+    public virtual ICollection<HorseRace> Horses { get; set; }
 
  
 

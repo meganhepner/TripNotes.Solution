@@ -7,8 +7,16 @@ namespace TripNotes.ViewModels
 {
   public class AddNotesViewModel
   {
-    public IEnumerable<Race> Races { get; set; }
+    // public AddNotesViewModel()
+    // {
+    //   this.Horses = new HashSet<HorseRace>();
+    // }
+    public Race race { get; set; }
     public Horse horse { get; set; }
     public HorseRace horseRace { get; set; }
+    public ICollection<Horse> Horses { get; set; }
+    public ICollection<Race> Races { get; set; }
+    public ICollection<HorseRace> HorseRaces { get; set; }
+
   }
 }

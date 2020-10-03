@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using TripNotes.ViewModels;
+using System.Threading.Tasks;
 
 namespace TripNotes.Controllers
 {
@@ -134,20 +135,27 @@ namespace TripNotes.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddNote(int id)
+    public ActionResult AddNotes(int id)
     {
-      var thisRace = _db.Races.FirstOrDefault(race => race.RaceId == id);
-      var viewModel = new AddNotesViewModel();
-      // viewModel.Races = _db.Races
-      // .Include(i => i.HorseRace)
-      // .ThenInclude(join => join.Horse)
-      // .FirstOrDefault(race => race.RaceId == id);
-      return View(viewModel);
+      // ViewBag.Notes = _db.HorseRace;
+      var thisRace = _db.Races
+      .Include(race => race.Horses)
+      .ThenInclude(join => join.Horse)
+      .FirstOrDefault(race => race.RaceId == id);
+      return View(thisRace);
     }
+
     [HttpPost]
-    public ActionResult AddNote(AddNotesViewModel addNotesViewModel)
+    public ActionResult AddNotes(int[] joinId)
     {
-  
+      Console.WriteLine(joinId[0]);
+      // foreach ()
+      // _db.HorseRace.Add( new HorseRace {// test HorseRace Add
+   
+      //   HorseNotes = "good run!",
+      //   HorsePerformance = 1,
+      // });
+      // _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
