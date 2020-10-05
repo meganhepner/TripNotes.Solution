@@ -4,7 +4,7 @@
   Layout = "_Layout";
 }
 
-<h1>Race Notes<h1>
+<h1>Add Pace<h1>
 <h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
 <h3>@Html.DisplayFor(model => model.RaceLength)</h3>
 <h3>@Html.DisplayFor(model => model.RaceClass)</h3>
@@ -29,10 +29,12 @@ else
         @Html.Hidden("horseId", @join.HorseId, new { @class="horseId" }) *@
 
         <li>@join.Horse.HorseName</li>
-        <label for="horseNotes">Notes</label>
-        <input type="text" name="horseNotes" class="horseNotes"><br>
-        <label for="horsePerformance">Performance</label>
-        <input type="text" name="horsePerformance" class="horsePerformance" value="0"><br>
+        <label for="BL1">First Call Beaten Lengths</label>
+        <input type="number" name="BL1" class="BL1"><br>
+        <label for="BL2">Second Call Beaten Lengths</label>
+        <input type="number" name="BL2" class="BL2"><br>
+        <label for="BL3">Third Call Beaten Lengths</label>
+        <input type="number" name="BL3" class="BL3"><br>
       </div>
       }
       <input type="submit" id="btnSubmit" value="Add Notes" /><br>
@@ -42,7 +44,7 @@ else
 </ul>
 }
 
-  @section scripts{
+  @* @section scripts{
     <script type="text/javascript">
       $(document).ready(function(){
 
@@ -69,5 +71,5 @@ else
         });
       }); 
     });
-    </script>
+    </script> *@
 }

@@ -154,8 +154,6 @@ namespace TripNotes.Controllers
           int id = int.Parse(HorseRaceList[0]);
           string horseNotes = HorseRaceList[1].ToString();
           int horsePerformance = int.Parse(HorseRaceList[2]);
-          Console.WriteLine(horseNotes);
-          Console.WriteLine(horsePerformance);
           var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
           thisHorseRace.HorseNotes = horseNotes;
           thisHorseRace.HorsePerformance = horsePerformance;
@@ -167,16 +165,3 @@ namespace TripNotes.Controllers
   }
 }
 
-  // for (int i = 0; i<HorseRaceArray.Length; i+=3)
-  //       {
-  //         var id = int.Parse(HorseRaceArray[i]);
-  //         var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
-  //       }
-  //           for (int j = 1; j<HorseRaceArray.Length; j+=3){
-  //           var horseNotes = HorseRaceArray[j];
-  //           Console.WriteLine(horseNotes);
-  //           }
-  //             for (int n = 2; n<HorseRaceArray.Length; n+=3){
-  //             var horsePerformance = int.Parse(HorseRaceArray[n]);
-  //             Console.WriteLine(horsePerformance);
-  //             }
