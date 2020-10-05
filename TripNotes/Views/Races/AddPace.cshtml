@@ -23,21 +23,21 @@ else
     {
       @foreach(var join in Model.Horses)
       { 
-      <div class ="notes">
+      <div class ="BL">
         @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
         @* @Html.HiddenFor(model => model.RaceId, new { @class="raceId" })
         @Html.Hidden("horseId", @join.HorseId, new { @class="horseId" }) *@
 
         <li>@join.Horse.HorseName</li>
         <label for="BL1">First Call Beaten Lengths</label>
-        <input type="number" name="BL1" class="BL1"><br>
+        <input type="number" step="0.1" name="BL1" class="BL1"><br>
         <label for="BL2">Second Call Beaten Lengths</label>
-        <input type="number" name="BL2" class="BL2"><br>
+        <input type="number" step="0.1" name="BL2" class="BL2"><br>
         <label for="BL3">Third Call Beaten Lengths</label>
-        <input type="number" name="BL3" class="BL3"><br>
+        <input type="number" step="0.1" name="BL3" class="BL3"><br>
       </div>
       }
-      <input type="submit" id="btnSubmit" value="Add Notes" /><br>
+      <input type="submit" id="btnSubmit" value="Calculate Pace Figures" /><br>
     }
 
 
@@ -50,12 +50,11 @@ else
 
         function getBLData(){
             var alldata = [];
-            $(".notes").each(function() { ///maybe change out of object format? Just 3 string in array?
+            $(".BL").each(function() {
               var HorseRaceId = $(this).find(".joinId ").val();
               var BL1 = $(this).find(".BL1").val();
               var BL2 = $(this).find(".BL2").val();
               var BL3 = $(this).find(".BL3").val();
-
               alldata.push(HorseRaceId, BL1, BL2, BL3);
             });
           return alldata;
@@ -64,8 +63,6 @@ else
         $('#btnSubmit').click(function () {
           var pace = (getBLData());
           var commaSeparatedPace = pace.toString();
-          console.log(commaSeparatedHorseRace);
-          debugger
           $.ajax({
               url: '/Races/AddPace',
               type: 'POST',

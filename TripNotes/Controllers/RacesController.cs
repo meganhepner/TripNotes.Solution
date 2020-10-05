@@ -189,6 +189,32 @@ namespace TripNotes.Controllers
           return View(thisRace);
         }
 
+        [HttpPost]
+        public ActionResult AddPace(string horsePace)
+        {
+          List<string> HorsePaceList = new List<string>{};
+          if(String.IsNullOrEmpty(horsePace))
+          {
+            System.Console.WriteLine("null oh no!");
+          } else {
+            HorsePaceList = horsePace.Split(",").ToList();
+          }
+          Console.WriteLine(horsePace);
+
+              for (int i = 0; i < HorsePaceList.Count; i++) {
+                int id = int.Parse(HorsePaceList[0]);
+                int BL1 = int.Parse(HorsePaceList[1]);
+                int BL2 = int.Parse(HorsePaceList[2]);
+                int BL3 = int.Parse(HorsePaceList[3]);
+                var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
+                // thisHorseRace.HorseNotes = horseNotes;
+                // thisHorseRace.HorsePerformance = horsePerformance;
+                HorsePaceList.RemoveRange(0, 4);
+                _db.SaveChanges();
+          }
+        return RedirectToAction("Index");
+        }
+
   }
 }
 
