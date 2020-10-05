@@ -52,20 +52,16 @@ else
 </ul>
 }
 
-  @section scripts{
+  @section scripts {
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function() {
 
         $('#test').click(function getFPSData() {
           let alldata = [];
               var raceLength = $(".raceLength").val();
-              console.log(raceLength);
               var firstFraction = $(".firstFraction").val();
-              console.log(firstFraction);
               var secondFraction = $(".secondFraction").val();
-              console.log(secondFraction);
               var thirdFraction = $(".thirdFraction").val();
-              console.log(thirdFraction);
           $(".BL").each(function() {
               var HorseRaceId = $(this).find(".joinId").val();
               var BL1 = $(this).find(".BL1").val();
@@ -101,7 +97,6 @@ else
         function calcSprint3Fr(BL2, BL3, thirdFraction, raceLength) {
           let change = (BL2 - BL3);
           let distance = calcDistance(raceLength);
-          console.log (distance);
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
         }
@@ -119,8 +114,21 @@ else
 
         function calcRoute3Fr(BL2, BL3, thirdFraction, raceLength) {
           let change = (BL2 - BL3);
+          let distance = calcDistance(raceLength);
+          let FPS = (distance + (change * 10)) / thirdFraction;
+          return FPS;
+        }
+
+        function calcDistance(raceLength) {
           let distance;
-          if (raceLength === 8) {
+          let length = parseInt(raceLength);
+          if (length === 6) {
+            distance = 1320;
+          } else if (length === 6.5) {
+            distance = 1650;
+          } else if (length === 7) {
+            distance = 1980;
+          } else if (raceLength === 8) {
             distance = 1320;
           } else if (raceLength === 8.18) {
             distance = 1440;
@@ -133,21 +141,6 @@ else
           } else if (raceLength === 9.5) {
             distance = 2310
           }
-          let FPS = (distance + (change * 10)) / thirdFraction;
-          return FPS;
-        }
-
-        function calcDistance(raceLength) {
-          let distance = 0;
-          if (raceLength === 6) {
-            distance = 1320;
-          } else if (raceLength === 6.5) {
-            distance = 1650;
-          } else (raceLength === 7) {
-            distance = 1980;
-          }
-                    console.log(distance);
-
           return distance;
         }
 
