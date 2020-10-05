@@ -146,27 +146,37 @@ namespace TripNotes.Controllers
     }
 
     [HttpPost]
-    public JsonResult AddNotes(string horseRace)
+    public ActionResult AddNotes(string horseRace)
       {
-        string [] HorseRaceArray = horseRace.Split(",");
+        List<string> HorseRaceList = horseRace.Split(",").ToList();
 
-        for (int i = 0; i<HorseRaceArray.Length; i+=3)
-        {
-          var id = int.Parse(HorseRaceArray[i]);
+        for (int i = 0; i < HorseRaceList.Count; i++) {
+          int id = int.Parse(HorseRaceList[0]);
+          string horseNotes = HorseRaceList[1].ToString();
+          int horsePerformance = int.Parse(HorseRaceList[2]);
+          Console.WriteLine(horseNotes);
+          Console.WriteLine(horsePerformance);
           var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
-            for (int j = 1; j<HorseRaceArray.Length; j+=3){
-            var horseNotes = HorseRaceArray[i];
-              for (int n = 2; n<HorseRaceArray.Length; n+=3){
-              var horsePerformance = int.Parse(HorseRaceArray[i]);
           thisHorseRace.HorseNotes = horseNotes;
           thisHorseRace.HorsePerformance = horsePerformance;
+          HorseRaceList.RemoveRange(0, 3);
           _db.SaveChanges();
-            }
-          }
         }
-          return Json("success");
-        }
-
-
+          return RedirectToAction("Index");
+      }
   }
 }
+
+  // for (int i = 0; i<HorseRaceArray.Length; i+=3)
+  //       {
+  //         var id = int.Parse(HorseRaceArray[i]);
+  //         var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
+  //       }
+  //           for (int j = 1; j<HorseRaceArray.Length; j+=3){
+  //           var horseNotes = HorseRaceArray[j];
+  //           Console.WriteLine(horseNotes);
+  //           }
+  //             for (int n = 2; n<HorseRaceArray.Length; n+=3){
+  //             var horsePerformance = int.Parse(HorseRaceArray[n]);
+  //             Console.WriteLine(horsePerformance);
+  //             }
