@@ -6,7 +6,7 @@
 
 <h1>Add Pace<h1>
 <h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
-<h3>@Html.DisplayFor(model => model.RaceLength)</h3>
+<h3>@Html.DisplayFor(model => model.RaceLength new { @class="raceLength" })</h3>
 <h3>@Html.DisplayFor(model => model.RaceClass)</h3>
 <h3>@Html.DisplayFor(model => model.RaceNotes)</h3>
 
@@ -51,14 +51,24 @@ else
         function getBLData(){
             var alldata = [];
             $(".BL").each(function() {
-              var HorseRaceId = $(this).find(".joinId ").val();
+              var HorseRaceId = $(this).find(".joinId").val();
+              var raceLength = $(this).find(".raceLength").val();
               var BL1 = $(this).find(".BL1").val();
               var BL2 = $(this).find(".BL2").val();
               var BL3 = $(this).find(".BL3").val();
+              if (raceLength <8){
+                calcSprint(raceLength, BL1, BL2, BL3);
+              } else {
+                calcRoute(raceLength);
+              }
               alldata.push(HorseRaceId, BL1, BL2, BL3);
             });
           return alldata;
         };
+
+        function calcSprint(raceLength, BL1, BL2, BL3) {
+
+        }
 
         $('#btnSubmit').click(function () {
           var pace = (getBLData());
