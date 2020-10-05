@@ -71,20 +71,19 @@ else
               var BL1 = $(this).find(".BL1").val();
               var BL2 = $(this).find(".BL2").val();
               var BL3 = $(this).find(".BL3").val();
-         
-              debugger
               if (raceLength < 8) {
                 let FPS1 = calcSprint1Fr(BL1, firstFraction);
                 let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction);
                 let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength);
                 alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
-              } else if (raceLength >= 8) {
-                calcRoute1Fr (BL1, firstFraction);
-                calcRoute2Fr (BL1, BL2, secondFraction);
-                calcRoute3Fr (BL2, BL3, thirdFraction, raceLength);
-                alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
-                }
-            });
+                } else if (raceLength >= 8) {
+                  calcRoute1Fr (BL1, firstFraction);
+                  calcRoute2Fr (BL1, BL2, secondFraction);
+                  calcRoute3Fr (BL2, BL3, thirdFraction, raceLength);
+                  alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
+                  }
+                });
+          console.log(alldata);
           return alldata;
         });
 
@@ -101,14 +100,8 @@ else
 
         function calcSprint3Fr(BL2, BL3, thirdFraction, raceLength) {
           let change = (BL2 - BL3);
-          let distance;
-          if (raceLength === 6) {
-            distance = 1320;
-          } else if (raceLength === 6.5) {
-            distance = 1650;
-          } else if (raceLength === 7) {
-            distance = 1980;
-          }
+          let distance = calcDistance(raceLength);
+          console.log (distance);
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
         }
@@ -142,6 +135,20 @@ else
           }
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
+        }
+
+        function calcDistance(raceLength) {
+          let distance = 0;
+          if (raceLength === 6) {
+            distance = 1320;
+          } else if (raceLength === 6.5) {
+            distance = 1650;
+          } else (raceLength === 7) {
+            distance = 1980;
+          }
+                    console.log(distance);
+
+          return distance;
         }
 
   
