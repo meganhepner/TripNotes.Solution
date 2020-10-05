@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using TripNotes.ViewModels;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+
+
 
 namespace TripNotes.Controllers
 {
@@ -137,7 +138,6 @@ namespace TripNotes.Controllers
 
     public ActionResult AddNotes(int id)
     {
-      // ViewBag.Notes = _db.HorseRace;
       var thisRace = _db.Races
       .Include(race => race.Horses)
       .ThenInclude(join => join.Horse)
@@ -146,18 +146,27 @@ namespace TripNotes.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddNotes(int[] joinId)
-    {
-      Console.WriteLine(joinId[0]);
-      // foreach ()
-      // _db.HorseRace.Add( new HorseRace {// test HorseRace Add
-   
-      //   HorseNotes = "good run!",
-      //   HorsePerformance = 1,
-      // });
-      // _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    public JsonResult AddNotes(string horseRace)
+      {
+        string [] HorseRaceArray = horseRace.Split(",");
+
+        for (int i = 0; i<HorseRaceArray.Length; i+=3)
+        {
+          var id = int.Parse(HorseRaceArray[i]);
+          var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
+            for (int j = 1; j<HorseRaceArray.Length; j+=3){
+            var horseNotes = HorseRaceArray[i];
+              for (int n = 2; n<HorseRaceArray.Length; n+=3){
+              var horsePerformance = int.Parse(HorseRaceArray[i]);
+          thisHorseRace.HorseNotes = horseNotes;
+          thisHorseRace.HorsePerformance = horsePerformance;
+          _db.SaveChanges();
+            }
+          }
+        }
+          return Json("success");
+        }
+
 
   }
 }

@@ -19,23 +19,25 @@ else
 {
   <h2>Horses :</h2>
   <ul>
-  @foreach(var join in Model.Horses)
-  { 
-    @using (Html.BeginForm("AddNotes", "Horses"))
+  @using(Html.BeginForm()) 
     {
+      @foreach(var join in Model.Horses)
+      { 
       <div class ="notes">
-      @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-      <li>@join.Horse.HorseName</li>
-      <label for="horseNotes">Notes</label>
-      <input type="text" name="horseNotes" class="horseNotes"><br>
-      <label for="horsePerformance">Performance</label>
-      <input type="text" name="horsePerformance" class="horsePerformance"><br>
+        @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
+        @Html.HiddenFor(model => model.RaceId, new { @class="raceId" })
+        @Html.Hidden("horseId", @join.HorseId, new { @class="horseId" })
+
+        <li>@join.Horse.HorseName</li>
+        <label for="horseNotes">Notes</label>
+        <input type="text" name="horseNotes" class="horseNotes"><br>
+        <label for="horsePerformance">Performance</label>
+        <input type="text" name="horsePerformance" class="horsePerformance"><br>
       </div>
+      }
+      <input type="submit" id="btnSubmit" value="Add Notes" /><br>
     }
-  
-  }
-  <input class="test btn btn-default" type="button" name="name" value="Test" />
-  <input type="submit" id="btnSubmit" value="Save Notes" /><br>
+
 
 </ul>
 }
@@ -46,25 +48,36 @@ else
 
         function getAllHorseRaceData(){
             var alldata = [];
-            $(".notes").each(function() {
-              var horseRace = {};
-              horseRace.Id = $(this).find(".joinId ").val();
-              horseRace.RaceNotes = $(this).find(".horseNotes").val();
-              horseRace.HorsePerformance = $(this).find(".horsePerformance").val();
-              alldata.push(horseRace);
+            $(".notes").each(function() { ///maybe change out of object format? Just 3 string in array?
+              var HorseRaceId = $(this).find(".joinId ").val();
+              var HorseNotes = $(this).find(".horseNotes").val();
+              var HorsePerformance = $(this).find(".horsePerformance").val();
+              alldata.push(HorseRaceId, HorseNotes, HorsePerformance);
             });
           return alldata;
         };
 
         $('#btnSubmit').click(function () {
-          var data = JSON.stringify(getAllHorseRaceData());
-          console.log(data);
+          var race = (getAllHorseRaceData());
+          var commaSeparatedHorseRace = race.toString();
+          console.log(commaSeparatedHorseRace);
+          debugger
           $.ajax({
               url: '/Races/AddNotes',
               type: 'POST',
-              data: { horseRace: data },
-          });
+              data: { horseRace: commaSeparatedHorseRace },
         });
       }); 
+    });
     </script>
 }
+
+
+    var horseRace = {};
+              horseRace.HorseRaceId = parseInt($(this).find(".joinId ").val());
+              horseRace.HorseId = parseInt($(this).find(".horseId ").val());
+              horseRace.RaceId = parseInt($(this).find(".raceId ").val());
+              horseRace.HorseNotes = $(this).find(".horseNotes").val();
+              horseRace.HorsePerformance = $(this).find(".horsePerformance").val();
+
+    var commaSeparatedHorseRace = data.toString();
