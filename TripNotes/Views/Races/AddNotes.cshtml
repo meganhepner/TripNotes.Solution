@@ -53,11 +53,13 @@ else
 
         function getAllHorseRaceData(){
             var alldata = [];
-            $(".notes").each(function() { ///maybe change out of object format? Just 3 string in array?
+            $(".notes").each(function() { 
               var HorseRaceId = $(this).find(".joinId ").val();
               var HorseNotes = $(this).find(".horseNotes").val();
+              var HandledHorseNotes = HorseNotes.split(",").join("");
               var HorsePerformance = $(this).find(".horsePerformance").val();
-              alldata.push(HorseRaceId, HorseNotes, HorsePerformance);
+              console.log(HandledHorseNotes)
+              alldata.push(HorseRaceId, HandledHorseNotes, HorsePerformance);
             });
           return alldata;
         };
