@@ -44,32 +44,34 @@ else
 </ul>
 }
 
-  @* @section scripts{
+  @section scripts{
     <script type="text/javascript">
       $(document).ready(function(){
 
-        function getAllHorseRaceData(){
+        function getBLData(){
             var alldata = [];
             $(".notes").each(function() { ///maybe change out of object format? Just 3 string in array?
               var HorseRaceId = $(this).find(".joinId ").val();
-              var HorseNotes = $(this).find(".horseNotes").val();
-              var HorsePerformance = $(this).find(".horsePerformance").val();
-              alldata.push(HorseRaceId, HorseNotes, HorsePerformance);
+              var BL1 = $(this).find(".BL1").val();
+              var BL2 = $(this).find(".BL2").val();
+              var BL3 = $(this).find(".BL3").val();
+
+              alldata.push(HorseRaceId, BL1, BL2, BL3);
             });
           return alldata;
         };
 
         $('#btnSubmit').click(function () {
-          var race = (getAllHorseRaceData());
-          var commaSeparatedHorseRace = race.toString();
+          var pace = (getBLData());
+          var commaSeparatedPace = pace.toString();
           console.log(commaSeparatedHorseRace);
           debugger
           $.ajax({
-              url: '/Races/AddNotes',
+              url: '/Races/AddPace',
               type: 'POST',
-              data: { horseRace: commaSeparatedHorseRace },
+              data: { horsePace: commaSeparatedPace },
         });
       }); 
     });
-    </script> *@
+    </script>
 }

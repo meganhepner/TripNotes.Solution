@@ -180,6 +180,14 @@ namespace TripNotes.Controllers
 
         }
 
+        public ActionResult AddPace(int id)
+        {
+          var thisRace = _db.Races
+          .Include(race => race.Horses)
+          .ThenInclude(join => join.Horse)
+          .FirstOrDefault(race => race.RaceId == id);
+          return View(thisRace);
+        }
 
   }
 }
