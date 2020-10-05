@@ -148,7 +148,13 @@ namespace TripNotes.Controllers
     [HttpPost]
     public ActionResult AddNotes(string horseRace)
       {
-        List<string> HorseRaceList = horseRace.Split(",").ToList();
+        List<string> HorseRaceList = new List<string>{};
+        if(String.IsNullOrEmpty(horseRace))
+        {
+          System.Console.WriteLine("null oh no!");
+        } else {
+          HorseRaceList = horseRace.Split(",").ToList();
+        }
 
         for (int i = 0; i < HorseRaceList.Count; i++) {
           int id = int.Parse(HorseRaceList[0]);

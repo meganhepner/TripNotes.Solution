@@ -21,6 +21,11 @@ else
   <ul>
   @using(Html.BeginForm()) 
     {
+      @* @Html.HiddenFor(model => model.RaceId)
+
+      @Html.LabelFor(model => model.RaceNotes)
+      @Html.EditorFor(model => model.RaceNotes) *@
+
       @foreach(var join in Model.Horses)
       { 
       <div class ="notes">
