@@ -19,12 +19,12 @@ else
 {
   <h2>Horses :</h2>
   <ul>
-  @using(Html.BeginForm()) 
+  @using(Html.BeginForm("AddRaceNotes", "Races")) 
     {
-      @* @Html.HiddenFor(model => model.RaceId)
+      @Html.HiddenFor(model => model.RaceId)
 
       @Html.LabelFor(model => model.RaceNotes)
-      @Html.EditorFor(model => model.RaceNotes) *@
+      @Html.EditorFor(model => model.RaceNotes)
 
       @foreach(var join in Model.Horses)
       { 

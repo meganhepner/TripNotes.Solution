@@ -156,18 +156,31 @@ namespace TripNotes.Controllers
           HorseRaceList = horseRace.Split(",").ToList();
         }
 
-        for (int i = 0; i < HorseRaceList.Count; i++) {
-          int id = int.Parse(HorseRaceList[0]);
-          string horseNotes = HorseRaceList[1].ToString();
-          int horsePerformance = int.Parse(HorseRaceList[2]);
-          var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
-          thisHorseRace.HorseNotes = horseNotes;
-          thisHorseRace.HorsePerformance = horsePerformance;
-          HorseRaceList.RemoveRange(0, 3);
-          _db.SaveChanges();
+            for (int i = 0; i < HorseRaceList.Count; i++) {
+              int id = int.Parse(HorseRaceList[0]);
+              string horseNotes = HorseRaceList[1].ToString();
+              int horsePerformance = int.Parse(HorseRaceList[2]);
+              var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
+              thisHorseRace.HorseNotes = horseNotes;
+              thisHorseRace.HorsePerformance = horsePerformance;
+              HorseRaceList.RemoveRange(0, 3);
+              _db.SaveChanges();
         }
-          return RedirectToAction("Index");
+      return RedirectToAction("Index");
       }
+
+      [HttpPost]
+      public ActionResult AddRaceNotes(Race race)
+        {
+          var thisRace = _db.Races.FirstOrDefault(r => r.RaceId == race.RaceId);
+          thisRace.RaceNotes = race.RaceNotes;;
+          _db.SaveChanges();
+
+          return RedirectToAction("Index");
+
+        }
+
+
   }
 }
 
