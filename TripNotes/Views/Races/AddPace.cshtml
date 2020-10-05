@@ -6,7 +6,8 @@
 
 <h1>Add Pace<h1>
 <h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
-<h3>@Html.DisplayFor(model => model.RaceLength, new { @class="raceLength" })</h3>
+<h3>@Html.DisplayFor(model => model.RaceLength)</h3>
+    @Html.HiddenFor(model => model.RaceLength, new { @class="raceLength" })
 <h3>@Html.DisplayFor(model => model.RaceClass)</h3>
 <h3>@Html.DisplayFor(model => model.RaceNotes)</h3>
 
@@ -31,10 +32,9 @@ else
       { 
       <div class ="BL">
         @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-        @* @Html.HiddenFor(model => model.RaceId, new { @class="raceId" })
-        @Html.Hidden("horseId", @join.HorseId, new { @class="horseId" }) *@
 
         <li>@join.Horse.HorseName</li>
+
         <label for="BL1">First Call Beaten Lengths</label>
         <input type="number" step="0.1" name="BL1" class="BL1"><br>
         <p>If horse was in lead at first call, enter 0 for beaten lengths. Otherwise, enter how many lengths the horse was behind the pace horse.</p>
@@ -56,23 +56,29 @@ else
     <script type="text/javascript">
       $(document).ready(function(){
 
-        function getFPSData() {
+        $('#test').click(function getFPSData() {
           let alldata = [];
-          let raceLength = $(this).find(".raceLength").val();
-          let firstFraction = $(this).find(".firstFraction").val();
-          let secondFraction = $(this).find(".secondFraction").val();
-          let thirdFraction = $(this).find(".thirdFraction").val();
-            $(".BL").each(function() {
+              var raceLength = $(".raceLength").val();
+              console.log(raceLength);
+              var firstFraction = $(".firstFraction").val();
+              console.log(firstFraction);
+              var secondFraction = $(".secondFraction").val();
+              console.log(secondFraction);
+              var thirdFraction = $(".thirdFraction").val();
+              console.log(thirdFraction);
+          $(".BL").each(function() {
               var HorseRaceId = $(this).find(".joinId").val();
               var BL1 = $(this).find(".BL1").val();
               var BL2 = $(this).find(".BL2").val();
               var BL3 = $(this).find(".BL3").val();
-              if (raceLength <8) {
+         
+              debugger
+              if (raceLength < 8) {
                 let FPS1 = calcSprint1Fr(BL1, firstFraction);
                 let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction);
                 let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength);
                 alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
-              } else {
+              } else if (raceLength >= 8) {
                 calcRoute1Fr (BL1, firstFraction);
                 calcRoute2Fr (BL1, BL2, secondFraction);
                 calcRoute3Fr (BL2, BL3, thirdFraction, raceLength);
@@ -80,7 +86,7 @@ else
                 }
             });
           return alldata;
-        };
+        });
 
         function calcSprint1Fr(BL1, firstFraction) {
           let FPS = (1320 - (BL1 * 10)) / firstFraction;
@@ -138,15 +144,7 @@ else
           return FPS;
         }
 
-        $('#btnSubmit').click(function () {
-          var pace = (getFPSData());
-          var commaSeparatedPace = pace.toString();
-          $.ajax({
-              url: '/Races/AddPace',
-              type: 'POST',
-              data: { horsePace: commaSeparatedPace },
-        });
-      }); 
+  
     });
     </script>
 }
@@ -170,3 +168,13 @@ else
           console.log(FPS);
           return FPS;
         }); *@
+
+              @* $('#btnSubmit').click(function () {
+          var pace = (getFPSData());
+          var commaSeparatedPace = pace.toString();          
+          $.ajax({
+              url: '/Races/AddPace',
+              type: 'POST',
+              data: { horsePace: commaSeparatedPace },
+        });
+      });  *@
