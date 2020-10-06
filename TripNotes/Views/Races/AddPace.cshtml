@@ -121,26 +121,29 @@ else
 
         function calcDistance(raceLength) {
           let distance;
-          let length = parseInt(raceLength);
+          length = parseFloat(raceLength);
+          console.log(length);
           if (length === 6) {
             distance = 1320;
           } else if (length === 6.5) {
             distance = 1650;
           } else if (length === 7) {
             distance = 1980;
-          } else if (raceLength === 8) {
+          } else if (length === 8) {
             distance = 1320;
-          } else if (raceLength === 8.18) {
+          } else if (length === 8.18) {
             distance = 1440;
-          } else if (raceLength === 8.42) {
+          } else if (length === 8.42) {
             distance = 1520;
-          } else if (raceLength === 8.5) {
+          } else if (length === 8.5) {
             distance = 1650;
-          } else if (raceLength === 9) {
+          } else if (length === 9) {
             distance = 1980;
-          } else if (raceLength === 9.5) {
+          } else if (length === 9.5) {
             distance = 2310
           }
+          console.log(distance);
+
           return distance;
         }
 
