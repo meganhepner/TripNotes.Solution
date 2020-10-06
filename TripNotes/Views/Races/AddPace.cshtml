@@ -90,13 +90,16 @@ else
 
         function calcSprint2Fr(BL1, BL2, secFraction) {
           let change = (BL1 - BL2);
+          console.log(change);
           let FPS = (1320 + (change * 10)) / secFraction;
           return FPS;
         }
 
         function calcSprint3Fr(BL2, BL3, thirdFraction, raceLength) {
           let change = (BL2 - BL3);
+          console.log(change);
           let distance = calcDistance(raceLength);
+          console.log(distance);
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
         }
@@ -141,6 +144,7 @@ else
           } else if (length === 9.5) {
             distance = 2310
           }
+          console.log(distance);
           return distance;
         }
 
