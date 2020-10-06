@@ -68,9 +68,9 @@ else
               var BL2 = $(this).find(".BL2").val();
               var BL3 = $(this).find(".BL3").val();
               if (raceLength < 8) {
-                let FPS1 = calcSprint1Fr(BL1, firstFraction);
-                let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction);
-                let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength);
+                let FPS1 = calcSprint1Fr(BL1, firstFraction).toFixed(2);
+                let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction).toFixed(2);
+                let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength).toFixed(2);
                 alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
                 } else if (raceLength >= 8) {
                   calcRoute1Fr (BL1, firstFraction);
@@ -122,7 +122,6 @@ else
         function calcDistance(raceLength) {
           let distance;
           length = parseFloat(raceLength);
-          console.log(length);
           if (length === 6) {
             distance = 1320;
           } else if (length === 6.5) {
@@ -142,8 +141,6 @@ else
           } else if (length === 9.5) {
             distance = 2310
           }
-          console.log(distance);
-
           return distance;
         }
 
