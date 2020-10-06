@@ -13,12 +13,22 @@ namespace TripNotes.Controllers
     {
       _db = db;
     }
-    public ActionResult Index(string searchString)
+    public ActionResult Index(string sortOrder, string searchString)
     {
+      ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
       var horses = from horse in _db.Horses select horse;
       if (!String.IsNullOrEmpty(searchString))
       {
           horses = horses.Where(horse => horse.HorseName.Contains(searchString));
+      }
+      switch (sortOrder)
+      {
+        case "name_desc":
+          horses = horses.OrderByDescending(horse => horse.HorseName);
+          break;
+        default:
+          horses = horses.OrderBy(horse => horse.HorseName);
+          break;
       }
       return View(horses.ToList());
     }
