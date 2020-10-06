@@ -7,14 +7,14 @@ namespace TripNotes.Models
     public int RaceId { get; set; }
     public string HorseNotes { get; set; }
     public int HorsePerformance { get; set; }
-    public int FirstFR { get; set; }
-    public int SecondFR { get; set; }
-    public int ThirdFR { get; set; }
-    public int AP { get; set; }
-    public int EP { get; set; }
-    public int SP { get; set; }
-    public int FX { get; set; }
-    public int PercentEarly { get; set; }
+    public double FirstFR { get; set; }
+    public double SecondFR { get; set; }
+    public double ThirdFR { get; set; }
+    public double AP { get; set; }
+    public double EP { get; set; }
+    public double SP { get; set; }
+    public double FX { get; set; }
+    public double PercentEarly { get; set; }
     public Horse Horse { get; set; }
     public Race Race { get; set; }
   }

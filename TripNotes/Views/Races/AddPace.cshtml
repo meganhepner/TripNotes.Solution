@@ -56,7 +56,7 @@ else
     <script type="text/javascript">
       $(document).ready(function() {
 
-        $('#test').click(function getFPSData() {
+        function getFPSData() {
           let alldata = [];
               var raceLength = $(".raceLength").val();
               var firstFraction = $(".firstFraction").val();
@@ -81,7 +81,7 @@ else
                 });
           console.log(alldata);
           return alldata;
-        });
+        };
 
         function calcSprint1Fr(BL1, firstFraction) {
           let FPS = (1320 - (BL1 * 10)) / firstFraction;
@@ -148,7 +148,17 @@ else
           return distance;
         }
 
-  
+        $('#btnSubmit').click(function () {
+          var pace = (getFPSData());
+          var commaSeparatedPace = pace.toString(); 
+          console.log(commaSeparatedPace);  
+          debugger       
+          $.ajax({
+              url: '/Races/AddPace',
+              type: 'POST',
+              data: { horsePace: commaSeparatedPace },
+        });
+      });
     });
     </script>
 }
@@ -173,12 +183,4 @@ else
           return FPS;
         }); *@
 
-              @* $('#btnSubmit').click(function () {
-          var pace = (getFPSData());
-          var commaSeparatedPace = pace.toString();          
-          $.ajax({
-              url: '/Races/AddPace',
-              type: 'POST',
-              data: { horsePace: commaSeparatedPace },
-        });
-      });  *@
+  
