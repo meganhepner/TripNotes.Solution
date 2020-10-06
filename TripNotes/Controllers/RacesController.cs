@@ -203,9 +203,9 @@ namespace TripNotes.Controllers
 
               for (int i = 0; i < HorsePaceList.Count; i++) {
                 int id = int.Parse(HorsePaceList[0]);
-                double first = float.Parse(HorsePaceList[1]);
-                double second = float.Parse(HorsePaceList[2]);
-                double third = float.Parse(HorsePaceList[3]);
+                double first = Math.Round(float.Parse(HorsePaceList[1]), 2);
+                double second = Math.Round(float.Parse(HorsePaceList[2]), 2);
+                double third = Math.Round(float.Parse(HorsePaceList[3]), 2);
                 var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
                 thisHorseRace.FirstFR = first;
                 thisHorseRace.SecondFR = second;
