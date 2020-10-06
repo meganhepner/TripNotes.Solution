@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TripNotes.Models;
-using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 
 namespace TripNotes.Controllers
 {
@@ -48,7 +50,7 @@ namespace TripNotes.Controllers
 
     public ActionResult Details(int id)
     {
-      ViewBag.RaceInfo = _db.HorseRace;
+      // ViewBag.RaceInfo = _db.HorseRace;
       var thisHorse = _db.Horses
       .Include(horse => horse.Races)
       .ThenInclude(join => join.Race)

@@ -30,6 +30,15 @@ else
         <th>
             Star
         </th>
+        <th>
+            FPS First Fraction
+        </th>
+        <th>
+            FPS Second Fraction
+        </th>
+        <th>
+            FPS Third Fraction
+        </th>
     </tr>
     
   @foreach (var join in Model.Races)
@@ -46,6 +55,15 @@ else
       </td>
       <td>
         @join.HorsePerformance
+      </td>
+      <td>
+        @join.FirstFR
+      </td>
+      <td>
+        @join.SecondFR
+      </td>
+      <td>
+        @join.ThirdFR
       </td>
     </tr>
   }

@@ -30,8 +30,6 @@ else
       { 
       <div class ="notes">
         @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-        @* @Html.HiddenFor(model => model.RaceId, new { @class="raceId" })
-        @Html.Hidden("horseId", @join.HorseId, new { @class="horseId" }) *@
 
         <li>@join.Horse.HorseName</li>
         <label for="horseNotes">Notes</label>
