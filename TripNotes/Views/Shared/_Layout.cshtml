@@ -2,9 +2,8 @@
 <html>
   <head>
     <title>Trip Notes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/css/styles.css" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -12,18 +11,9 @@
   </head>
   <body>
     <div class="container-fluid">
-      @* <div class="row">
-        <div class="col-md-2">
-          @Html.Partial("_Nav")
-        </div>
-        <div class="col-md-10">
-          @RenderBody()
-        </div> *@
-          @Html.Partial("_Nav")
-          @RenderBody()
-          
+      @Html.Partial("_Nav")
+      @RenderBody()
+    
 
-      </div>
-    </div>
   </body>
 </html>
