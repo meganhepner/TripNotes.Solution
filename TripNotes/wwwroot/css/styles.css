@@ -1,7 +1,8 @@
 h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 70px;
-  color: rgba(255, 255, 255, 0.76)
+  color: rgba(255, 255, 255, 0.76);
+  padding-top: 20px;
   }
   
   body {
@@ -37,13 +38,25 @@ h1 {
     font-size: 40px;
   }
 
-  body {
+  /* body {
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-  }
+  } */
   
   .nav-link {
-    font-size: 16px;
-    padding-right: 20px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+
+    margin-right: 20px;
+  }
+
+  a:link {
+    color: #055a8c;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #298fca
+
   }
