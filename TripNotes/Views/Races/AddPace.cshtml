@@ -73,9 +73,9 @@ else
                 let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength).toFixed(2);
                 alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
                 } else if (raceLength >= 8) {
-                  calcRoute1Fr (BL1, firstFraction);
-                  calcRoute2Fr (BL1, BL2, secondFraction);
-                  calcRoute3Fr (BL2, BL3, thirdFraction, raceLength);
+                  let FPS1 = calcRoute1Fr (BL1, firstFraction).toFixed(2);
+                  let FPS2 = calcRoute2Fr (BL1, BL2, secondFraction).toFixed(2);
+                  let FPS3 = calcRoute3Fr (BL2, BL3, thirdFraction, raceLength).toFixed(2);
                   alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
                   }
                 });
