@@ -12,6 +12,11 @@ h1 {
     text-align: center;
   }
 
+  body.index {
+    background-image: url("../img/PM.jpg");
+  }
+
+
   .column{
     text-align: left;
     font-size: 25px;
