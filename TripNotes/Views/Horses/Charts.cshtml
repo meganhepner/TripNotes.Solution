@@ -116,32 +116,33 @@
         var travellingValue = $('#txtTravelling').val();  
         var communicationValue = $('#txtCommunication').val();  
         var othersValue = $('#txtOthers').val();  
-        alldata.push(educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue);
-        console.log(alldata);
-        return alldata;
-        });
+        //alldata.push(educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue);
+        //console.log(alldata);
+        //return alldata;
+
 
         var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
+        // The data for our dataset
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue]
+                //data: [0, 10, 5, 2, 20, 30]
+            }]
+        },
 
-    // Configuration options go here
-    options: {}
-});
+        // Configuration options go here
+        options: {}
+    });
   });
-
+});
 
 
 
