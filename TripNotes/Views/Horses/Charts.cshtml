@@ -36,26 +36,27 @@
                             <tbody>  
                                 <tr>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="horseName" />  
+                                        <input type="text" class="form-control horseName" />  
                                     </th>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="FPS1" />  
+                                        <input type="text" class="form-control FPS1" />  
                                     </th>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="FPS2" />  
+                                        <input type="text" class="form-control FPS2" />  
                                     </th>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="FPS3" />  
+                                        <input type="text" class="form-control FPS3" />  
                                     </th>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="EPace" />  
+                                        <input type="text" class="form-control EPace" />  
                                     </th>  
                                     <th scope="row">  
-                                        <input type="text" class="form-control" id="AvgPace" />  
+                                        <input type="text" class="form-control AvgPace" />  
                                     </th>  
                                 </tr> 
                                 <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
- 
+                                <br>
+                                <br>
                             </tbody>  
                         </table>  
                     </div>  
@@ -73,48 +74,50 @@
   <script id="template" type="text/template"> 
        <tr>  
         <th scope="row">  
-            <input type="text" class="form-control" id="horseName" />  
+            <input type="text" class="form-control horseName" />  
         </th>  
         <th scope="row">  
-            <input type="text" class="form-control" id="FPS1" />  
+            <input type="text" class="form-control FPS1" />  
         </th>  
         <th scope="row">  
-            <input type="text" class="form-control" id="FPS2" />  
+            <input type="text" class="form-control FPS2" />  
         </th>  
         <th scope="row">  
-            <input type="text" class="form-control" id="FPS3" />  
+            <input type="text" class="form-control FPS3" />  
         </th>  
         <th scope="row">  
-            <input type="text" class="form-control" id="EPace" />  
+            <input type="text" class="form-control EPace" />  
         </th>  
         <th scope="row">  
-            <input type="text" class="form-control" id="AvgPace" />  
+            <input type="text" class="form-control AvgPace" />  
         </th>  
     </tr>  
   </script>
 
 @section scripts{
-    <script type="text/javascript">
+  <script type="text/javascript">
 
-      $(document).ready(function() {
-      
+    $(document).ready(function() {
+    
       $(".btnAdd").click(function() {
           $(".table").append($("#template").html());
         });
 
       $('.btnTest').click(function getHorseData() {
-      let alldata = [];
-        var horseName = $('#horseName').val();  
-        var FPS1 = $('#FPS1').val();  
-        var FPS2 = $('#FPS2').val();  
-        var FPS3 = $('#FPS3').val();  
-        var ePace = $('#EPace').val();  
-        var avgPace = $('#AvgPace').val();  
-        alldata.push(FPS1, FPS2, FPS3, ePace, avgPace);
-        console.log(alldata);
-        //return alldata;
+        var horseName = horseNameArray();  
+        var FPS1 = fps1Array();  
+        var FPS2 = fps2Array();  
+        var FPS3 = fps3Array();  
+        var ePace = ePaceArray();  
+        var avgPace = avgPaceArray();  
+        console.log(horseName);
+        console.log(FPS1);
+        console.log(FPS2);
+        console.log(FPS3);
+        console.log(ePace);
+        console.log(avgPace);
 
-
+        
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -128,22 +131,76 @@
                 label: 'My First dataset',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: alldata
+                data: FPS1
             }]
         },
 
         // Configuration options go here
         options: {}
-    });
-  });
+        });
+      });
+
+      function horseNameArray() {
+      var data = [];
+      $('.horseName').each(function() {
+        var horseName = $(this).val();  
+        data.push(horseName);
+      }); 
+      return data;
+      };
+
+      function fps1Array() {
+      var data = [];
+      $('.FPS1').each(function() {
+        var FPS1 = $(this).val();  
+        data.push(FPS1);
+      }); 
+      return data;
+      };
+
+      function fps2Array() {
+      var data = [];
+      $('.FPS2').each(function() {
+        var FPS2 = $(this).val();  
+        data.push(FPS2);
+      }); 
+      return data;
+      };
+
+      function fps3Array() {
+      var data = [];
+      $('.FPS3').each(function() {
+        var FPS3 = $(this).val();  
+        data.push(FPS3);
+      }); 
+      return data;
+      };
+
+      function ePaceArray() {
+      var data = [];
+      $('.EPace').each(function() {
+        var ePace = $(this).val();  
+        data.push(ePace);
+      }); 
+      return data;
+      };
+
+      function avgPaceArray() {
+      var data = [];
+      $('.AvgPace').each(function() {
+        var avgPace = $(this).val();  
+        data.push(avgPace);
+      }); 
+      return data;
+      };
 });
 
 
 
 
-  
 
-    </script>
+
+  </script>
 }
 
  
