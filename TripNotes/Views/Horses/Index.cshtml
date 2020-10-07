@@ -20,6 +20,8 @@ else
       Find by name: @Html.TextBox("SearchString")
       <input type="submit" value="Search" class="input"/>
       <input type="button" value="Add New Horse" onclick="location.href='@Url.Action("Create", "Horses")'" />
+      <input type="button" value="Go To Charts" onclick="location.href='@Url.Action("Charts", "Horses")'" />
+
     </p>
   }
   <table class="table">

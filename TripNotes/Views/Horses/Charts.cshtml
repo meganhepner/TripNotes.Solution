@@ -5,118 +5,112 @@
 }
 
 <div class="form-horizontal">  
-        <div class="row">  
+    <div class="row">  
+        <div class="col-md-12">  
             <div class="col-md-12">  
-                <div class="form-horizontal">  
-                    <div class="row">  
-                        <div class="col-md-12">  
-                            <div class="col-md-4">  
-                                <div class="form-group">  
-                                    <div class="col-md-8">  
-                                        <label class="control-label">Enter Your Expenses Below</label>  
-                                    </div>  
-                                </div>  
-                            </div>  
-  
-                        </div>  
-                    </div>  
-  
-                    <div class="row">  
-                        <div class="col-md-12">  
-                            <div class="col-md-12">  
-                                <div class="form-group">  
-                                    <div class="col-md-12">  
-                                        <table class="table table-bordered table-responsive">  
-                                            <thead>  
-                                                <tr>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Education</label>  
-                                                    </th>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Lodging</label>  
-                                                    </th>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Fooding</label>  
-                                                    </th>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Travelling</label>  
-                                                    </th>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Communication</label>  
-                                                    </th>  
-                                                    <th scope="col">  
-                                                        <label class="control-label">Others</label>  
-                                                    </th>  
-                                                </tr>  
-                                            </thead>  
-                                            <tbody>  
-                                                <tr>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtEducation" />  
-                                                    </th>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtLodging" />  
-                                                    </th>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtFooding" />  
-                                                    </th>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtTravelling" />  
-                                                    </th>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtCommunication" />  
-                                                    </th>  
-                                                    <th scope="row">  
-                                                        <input type="text" class="form-control" id="txtOthers" />  
-                                                    </th>  
-                                                </tr>  
-                                                <tr>  
-                                                    <th scope="row" colspan="2">  
-                                                        <div id="chartContainerPie" class="containerPie">  
-                                                            <canvas id="myChart"> </canvas>  
-                                                        </div>  
-                                                    </th>  
-                                                    <th scope="row" colspan="2">  
-                                                        <div id="chartContainer" class="container">  
-                                                            <canvas id="myChartPie"> </canvas>  
-                                                        </div>  
-                                                    </th>  
-                                                    <th scope="row" colspan="2">  
-                                                        <div id="chartContainerLine" class="containerLine">  
-                                                            <canvas id="myChartLine"> </canvas>  
-                                                        </div>  
-                                                    </th>  
-                                                </tr>  
-  
-                                            </tbody>  
-                                        </table>  
-                                    </div>  
-                                </div>  
-                            </div>  
-                        </div>  
+                <div class="form-group">  
+                    <div class="col-md-12">  
+                        <table class="table table-bordered table-responsive">  
+                            <thead>  
+                                <tr>  
+                                    <th scope="col">  
+                                        <label class="control-label">Horse</label>  
+                                    </th>  
+                                    <th scope="col">  
+                                        <label class="control-label">FPS 1 Call</label>  
+                                    </th>  
+                                    <th scope="col">  
+                                        <label class="control-label">FPS 2 Call</label>  
+                                    </th>  
+                                    <th scope="col">  
+                                        <label class="control-label">FPS 3 Call</label>  
+                                    </th>  
+                                    <th scope="col">  
+                                        <label class="control-label">E Pace</label>  
+                                    </th>  
+                                    <th scope="col">  
+                                        <label class="control-label">Avg Pace</label>  
+                                    </th>  
+                                </tr>  
+                            </thead>  
+                            <tbody>  
+                                <tr>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="horseName" />  
+                                    </th>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="FPS1" />  
+                                    </th>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="FPS2" />  
+                                    </th>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="FPS3" />  
+                                    </th>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="EPace" />  
+                                    </th>  
+                                    <th scope="row">  
+                                        <input type="text" class="form-control" id="AvgPace" />  
+                                    </th>  
+                                </tr> 
+                                <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
+ 
+                            </tbody>  
+                        </table>  
                     </div>  
                 </div>  
             </div>  
         </div>  
+    </div>  
+</div>  
+       <div id="chartContainerPie" class="containerPie">  
+          <canvas id="myChart"> </canvas>  
+        </div>  
         <button type="button" class="btnTest btn-light">Light</button>
     </div>  
 
-
+  <script id="template" type="text/template"> 
+       <tr>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="horseName" />  
+        </th>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="FPS1" />  
+        </th>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="FPS2" />  
+        </th>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="FPS3" />  
+        </th>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="EPace" />  
+        </th>  
+        <th scope="row">  
+            <input type="text" class="form-control" id="AvgPace" />  
+        </th>  
+    </tr>  
+  </script>
 
 @section scripts{
     <script type="text/javascript">
 
       $(document).ready(function() {
+      
+      $(".btnAdd").click(function() {
+          $(".table").append($("#template").html());
+        });
 
       $('.btnTest').click(function getHorseData() {
       let alldata = [];
-        var educationValue = $('#txtEducation').val();  
-        var lodgingValue = $('#txtLodging').val();  
-        var foodingValue = $('#txtFooding').val();  
-        var travellingValue = $('#txtTravelling').val();  
-        var communicationValue = $('#txtCommunication').val();  
-        var othersValue = $('#txtOthers').val();  
-        alldata.push(educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue);
+        var horseName = $('#horseName').val();  
+        var FPS1 = $('#FPS1').val();  
+        var FPS2 = $('#FPS2').val();  
+        var FPS3 = $('#FPS3').val();  
+        var ePace = $('#EPace').val();  
+        var avgPace = $('#AvgPace').val();  
+        alldata.push(FPS1, FPS2, FPS3, ePace, avgPace);
         console.log(alldata);
         //return alldata;
 
@@ -124,16 +118,16 @@
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
         // The type of chart we want to create
-        type: 'bar',
+        type: 'horizontalBar',
+        autoSkip: false,  
 
         // The data for our dataset
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            labels: ['January', 'February', 'March', 'April', 'May'],
             datasets: [{
                 label: 'My First dataset',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                //data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue]
                 data: alldata
             }]
         },
@@ -153,7 +147,7 @@
 }
 
  
-    //For Bar Chart  
+    @* //For Bar Chart  
         var ctx = document.getElementById("myChart").getContext('2d');  
         ctx.height = 900;  
         var myChart = new Chart(ctx, {  
@@ -250,4 +244,4 @@
                             }]  
                         }  
                     }  
-                }); 
+                });  *@
