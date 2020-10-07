@@ -5,45 +5,85 @@
 }
 
 <h1>Race Notes<h1>
-<h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
-<h3>@Html.DisplayFor(model => model.RaceLength)</h3>
-<h3>@Html.DisplayFor(model => model.RaceClass)</h3>
-<h3>@Html.DisplayFor(model => model.RaceNotes)</h3>
+<h3>@Html.Label("Date "): @Html.DisplayFor(model => model.RaceDate)  @Html.DisplayFor(model => model.RaceLength) @Html.Label("    Furlongs ") @Html.Label("     Class "): @Html.DisplayFor(model => model.RaceClass)</h3>
 
-
-  @if(@Model.Horses.Count == 0)
+@if(@Model.Horses.Count == 0)
 {
   <p>This race has no horses assigned to it</p>
 }
 else
 {
   <h2>Horses :</h2>
-  <ul>
+
   @using(Html.BeginForm("AddRaceNotes", "Races")) 
     {
       @Html.HiddenFor(model => model.RaceId)
-
       @Html.LabelFor(model => model.RaceNotes)
       @Html.EditorFor(model => model.RaceNotes)
 
-      @foreach(var join in Model.Horses)
-      { 
-      <div class ="notes">
-        @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
+      @* @foreach(var join in Model.Horses)
+      {  *@
+        <table class="table">
+          <tr>
+        <th>
+          <li>Horse</li>
+        </th>
+        <th>
+          <label for="horseNotes">Notes</label>
+        </th>
+        <th>
+          <label for="horsePerformance">Performance</label>
+        </th>
+        </tr>
 
-        <li>@join.Horse.HorseName</li>
-        <label for="horseNotes">Notes</label>
-        <input type="text" name="horseNotes" class="horseNotes"><br>
-        <label for="horsePerformance">Performance</label>
-        <input type="text" name="horsePerformance" class="horsePerformance" value="0"><br>
-      </div>
+        @foreach (var join in Model.Horses)
+        {
+          <tr>
+            <td>
+              @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
+              @join.Horse.HorseName
+            </td>
+            <td>
+              <input type="text" name="horseNotes" class="horseNotes"><br>
+            </td>
+            <td>
+              <input type="text" name="horsePerformance" class="horsePerformance" value="0"><br>
+
+            </td>
+          </tr>
+        }
+        </table>
+    }
+}
+
+
+
+
+@* 
+      <ul>
+        <div class ="notes">
+          @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
+          <div class="row">
+            <div class="col-md-4 column">
+              <li>@join.Horse.HorseName</li>
+            </div>
+            <div class="col-md-4 column">
+              <label for="horseNotes">Notes</label>
+              <input type="text" name="horseNotes" class="horseNotes"><br>
+            </div>
+            <div class="col-md-4 column">
+              <label for="horsePerformance">Performance</label>
+              <input type="text" name="horsePerformance" class="horsePerformance" value="0"><br>
+            </div>
+        </div>
+      </ul>
       }
       <input type="submit" id="btnSubmit" value="Add Notes" /><br>
     }
 
 
-</ul>
-}
+
+} *@
 
   @section scripts{
     <script type="text/javascript">
