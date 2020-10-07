@@ -55,6 +55,7 @@
                                     </th>  
                                 </tr> 
                                 <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
+                                <button type="button" class="btnTest">Display Charts</button>
                                 <br>
                                 <br>
                             </tbody>  
@@ -65,11 +66,29 @@
         </div>  
     </div>  
 </div>  
-       <div id="chartContainerPie" class="containerPie">  
-          <canvas id="myChart"> </canvas>  
-        </div>  
-        <button type="button" class="btnTest btn-light">Light</button>
-    </div>  
+
+<div class="containerChart">  
+      <canvas id="firstFrac"> </canvas>  
+</div>
+
+<div class="containerChart">    
+      <canvas id="secFrac"> </canvas>  
+</div> 
+
+<div class="containerChart">   
+      <canvas id="thirdFrac"> </canvas>  
+</div> 
+
+<div class="containerChart">  
+      <canvas id="earlyPace"> </canvas>  
+</div> 
+
+<div class="containerChart">   
+      <canvas id="averagePace"> </canvas>  
+</div> 
+
+
+
 
   <script id="template" type="text/template"> 
        <tr>  
@@ -118,7 +137,38 @@
         console.log(avgPace);
 
         
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById('firstFrac').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'horizontalBar',
+        height: "230px",  
+        width: "300px",    
+
+        // The data for our dataset
+        data: {
+            labels: horseName,
+            datasets: [{
+                label: 'Feet Per Second First Call',
+                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
+                borderColor: 'rgb(255, 99, 132)',
+                data: FPS1
+            }]
+        },
+
+        // Configuration options go here
+          options: {               
+            scales: {  
+                      xAxes: [{  
+                        barPercentage: 0.5,
+                        ticks: {  
+                          min: 45
+                        }  
+                      }],  
+                    }
+                  }  
+        });
+
+      var ctx = document.getElementById('secFrac').getContext('2d');
         var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'horizontalBar',
@@ -126,9 +176,9 @@
 
         // The data for our dataset
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May'],
+            labels: horseName,
             datasets: [{
-                label: 'My First dataset',
+                label: 'Feet Per Second Second Call',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: FPS1
@@ -138,73 +188,130 @@
         // Configuration options go here
         options: {}
         });
+
+      var ctx = document.getElementById('thirdFrac').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'horizontalBar',
+        autoSkip: false,  
+
+        // The data for our dataset
+        data: {
+            labels: horseName,
+            datasets: [{
+                label: 'Feet Per Second Third Call',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: FPS1
+            }]
+        },
+
+        // Configuration options go here
+
+        });
+
+      var ctx = document.getElementById('earlyPace').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'horizontalBar',
+        autoSkip: false,  
+
+        // The data for our dataset
+        data: {
+            labels: horseName,
+            datasets: [{
+                label: 'Early Pace',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: FPS1
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+        });
+  
+        var ctx = document.getElementById('averagePace').getContext('2d');
+          var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'horizontalBar',
+          autoSkip: false,  
+
+          // The data for our dataset
+          data: {
+              labels: horseName,
+              datasets: [{
+                  label: 'Average Pace',
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: FPS1
+              }]
+          },
+
+          // Configuration options go here
+
+          });
+
+        function horseNameArray() {
+        var data = [];
+        $('.horseName').each(function() {
+          var horseName = $(this).val();  
+          data.push(horseName);
+        }); 
+        return data;
+        };
+
+        function fps1Array() {
+        var data = [];
+        $('.FPS1').each(function() {
+          var FPS1 = $(this).val();  
+          data.push(FPS1);
+        }); 
+        return data;
+        };
+
+        function fps2Array() {
+        var data = [];
+        $('.FPS2').each(function() {
+          var FPS2 = $(this).val();  
+          data.push(FPS2);
+        }); 
+        return data;
+        };
+
+        function fps3Array() {
+        var data = [];
+        $('.FPS3').each(function() {
+          var FPS3 = $(this).val();  
+          data.push(FPS3);
+        }); 
+        return data;
+        };
+
+        function ePaceArray() {
+        var data = [];
+        $('.EPace').each(function() {
+          var ePace = $(this).val();  
+          data.push(ePace);
+        }); 
+        return data;
+        };
+
+        function avgPaceArray() {
+        var data = [];
+        $('.AvgPace').each(function() {
+          var avgPace = $(this).val();  
+          data.push(avgPace);
+        }); 
+        return data;
+        };
       });
-
-      function horseNameArray() {
-      var data = [];
-      $('.horseName').each(function() {
-        var horseName = $(this).val();  
-        data.push(horseName);
-      }); 
-      return data;
-      };
-
-      function fps1Array() {
-      var data = [];
-      $('.FPS1').each(function() {
-        var FPS1 = $(this).val();  
-        data.push(FPS1);
-      }); 
-      return data;
-      };
-
-      function fps2Array() {
-      var data = [];
-      $('.FPS2').each(function() {
-        var FPS2 = $(this).val();  
-        data.push(FPS2);
-      }); 
-      return data;
-      };
-
-      function fps3Array() {
-      var data = [];
-      $('.FPS3').each(function() {
-        var FPS3 = $(this).val();  
-        data.push(FPS3);
-      }); 
-      return data;
-      };
-
-      function ePaceArray() {
-      var data = [];
-      $('.EPace').each(function() {
-        var ePace = $(this).val();  
-        data.push(ePace);
-      }); 
-      return data;
-      };
-
-      function avgPaceArray() {
-      var data = [];
-      $('.AvgPace').each(function() {
-        var avgPace = $(this).val();  
-        data.push(avgPace);
-      }); 
-      return data;
-      };
-});
-
-
-
-
-
-
+    });
   </script>
 }
 
  
-    @* //For Bar Chart  
+     //For Bar Chart  
         var ctx = document.getElementById("myChart").getContext('2d');  
         ctx.height = 900;  
         var myChart = new Chart(ctx, {  
@@ -228,77 +335,7 @@
             }, options: {  
                 events: ['click'],  
                 scaleShowValues: true,  
-                scales: {  
-                    yAxes: [{  
-                        ticks: {  
-                            beginAtZero: true  
-                        }  
-                    }],  
-                    xAxes: [{  
-                        ticks: {  
-                            autoSkip: false  
-                        }  
-                    }]  
-                }  
+ 
             }  
         }); 
   
-                //For Pie Chart  
-                var ctx1 = document.getElementById("myChartPie").getContext('2d');  
-                var myChart = new Chart(ctx1, {  
-                    type: 'pie',  
-                    height: "230px",  
-                    width: "300px",  
-                    responsive: false,  
-                    animation: false,  
-                    legend: { position: 'bottom' },  
-                    data: {  
-                        //labels: ["M", "T", "W", "T", "F", "S", "S"],  
-                        labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
-                        datasets: [{  
-                            label: 'Monthly Expenses',
-                            data: alldata,
-                            //data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
-                            backgroundColor: ["red", "blue", "green", "yellow", "pink", "brown"]  
-                        }]  
-                    }, options: {  
-                        // This chart will not respond to mousemove, etc  
-                        events: ['click']  
-                    }  
-                });  
-  
-                //For Line Chart  
-                var ctx = document.getElementById("myChartLine").getContext('2d');  
-                var myChart = new Chart(ctx, {  
-                    type: 'line',  
-                    height: "230px",  
-                    width: "300px",  
-                    responsive: false,  
-                    animation: false,  
-                    legend: { position: 'bottom' },  
-                    data: {  
-                        //labels: ["M", "T", "W", "T", "F", "S", "S"],  
-                        labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
-                        datasets: [{  
-                            label: 'Monthly Expenses',  
-                            data: alldata,
-                            //data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
-                            backgroundColor: "rgb(66, 134, 244)"  
-                        }]  
-                    }, options: {  
-                        events: ['click'],  
-                        scaleShowValues: true,  
-                        scales: {  
-                            yAxes: [{  
-                                ticks: {  
-                                    beginAtZero: true  
-                                }  
-                            }],  
-                            xAxes: [{  
-                                ticks: {  
-                                    autoSkip: false  
-                                }  
-                            }]  
-                        }  
-                    }  
-                });  *@
