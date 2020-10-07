@@ -1,8 +1,9 @@
-@model TripNotes.Models.Horse
+@model TripNotes.Models.HorseRace
 
 @{
   Layout = "_Layout";
 }
+
 <div class="form-horizontal">  
         <div class="row">  
             <div class="col-md-12">  
@@ -97,42 +98,134 @@
                 </div>  
             </div>  
         </div>  
+        <button type="button" class="btnTest btn-light">Light</button>
     </div>  
-@* <div class="div-1">
-  <p> does it need a p tag ? </p>
-  @Html.Label("X Value : ") <input id="xValue" type="number" step="any" placeholder="Enter X-Value">
-  @Html.Label("Y Value : ") <input id="yValue" type="number" step="any" placeholder="Enter Y-Value">
-  <button id="renderButton">Add DataPoints &amp; Render Chart</button>
-</div>
-<div id="chartContainer" style="height: 300px; width: 100%;"></div> *@
+
+
 
 @section scripts{
-    @* <script type="text/javascript">
-        window.onload = function() {
-            var dps = []; //dataPoints. 
+    <script type="text/javascript">
+      $(document).ready(function() {
 
-            var chart = new CanvasJS.Chart("chartContainer", {
-                title: {
-                    text: "Accepting DataPoints from User Input"
-                },
-                data: [{
-                    type: "line",
-                    dataPoints: dps
-                }]
-            });
+      $('.btnTest').click(function getHorseData() {
+      let alldata = [];
+        var educationValue = $('#txtEducation').val();  
+        var lodgingValue = $('#txtLodging').val();  
+        var foodingValue = $('#txtFooding').val();  
+        var travellingValue = $('#txtTravelling').val();  
+        var communicationValue = $('#txtCommunication').val();  
+        var othersValue = $('#txtOthers').val();  
+        alldata.push(educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue);
+        console.log(alldata);
+        return alldata;
+  
 
-            function addDataPointsAndRender() {
-                xValue = Number(document.getElementById("xValue").value);
-                yValue = Number(document.getElementById("yValue").value);
-                dps.push({
-                    x: xValue,
-                    y: yValue
-                });
-                chart.render();
-            }
 
-            var renderButton = document.getElementById("renderButton");
-            renderButton.addEventListener("click", addDataPointsAndRender);
-        }
-    </script> *@
+  //For Bar Chart  
+        var ctx = document.getElementById("myChart").getContext('2d');  
+        ctx.height = 900;  
+        var myChart = new Chart(ctx, {  
+            type: 'bar',  
+            height: "230px",  
+            width: "300px",  
+            autoSkip: false,  
+            responsive: false,  
+            animation: false,  
+            showDatapoints: true,  
+            legend: { position: 'bottom' },  
+            data: {  
+                //labels: ["M", "T", "W", "T", "F", "S", "S"],  
+                labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
+                datasets: [{  
+                    label: 'Monthly Expenses',  
+                    //data: alldata,
+                    data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
+                    backgroundColor: ["red", "blue", "green", "yellow", "pink", "brown"]  
+                }]  
+            }, options: {  
+                events: ['click'],  
+                scaleShowValues: true,  
+                scales: {  
+                    yAxes: [{  
+                        ticks: {  
+                            beginAtZero: true  
+                        }  
+                    }],  
+                    xAxes: [{  
+                        ticks: {  
+                            autoSkip: false  
+                        }  
+                    }]  
+                }  
+            }  
+        }); 
+          });
+  });
+
+  
+
+    </script>
 }
+
+ 
+  
+  
+                //For Pie Chart  
+                var ctx1 = document.getElementById("myChartPie").getContext('2d');  
+                var myChart = new Chart(ctx1, {  
+                    type: 'pie',  
+                    height: "230px",  
+                    width: "300px",  
+                    responsive: false,  
+                    animation: false,  
+                    legend: { position: 'bottom' },  
+                    data: {  
+                        //labels: ["M", "T", "W", "T", "F", "S", "S"],  
+                        labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
+                        datasets: [{  
+                            label: 'Monthly Expenses',
+                            data: alldata,
+                            //data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
+                            backgroundColor: ["red", "blue", "green", "yellow", "pink", "brown"]  
+                        }]  
+                    }, options: {  
+                        // This chart will not respond to mousemove, etc  
+                        events: ['click']  
+                    }  
+                });  
+  
+                //For Line Chart  
+                var ctx = document.getElementById("myChartLine").getContext('2d');  
+                var myChart = new Chart(ctx, {  
+                    type: 'line',  
+                    height: "230px",  
+                    width: "300px",  
+                    responsive: false,  
+                    animation: false,  
+                    legend: { position: 'bottom' },  
+                    data: {  
+                        //labels: ["M", "T", "W", "T", "F", "S", "S"],  
+                        labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
+                        datasets: [{  
+                            label: 'Monthly Expenses',  
+                            data: alldata,
+                            //data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
+                            backgroundColor: "rgb(66, 134, 244)"  
+                        }]  
+                    }, options: {  
+                        events: ['click'],  
+                        scaleShowValues: true,  
+                        scales: {  
+                            yAxes: [{  
+                                ticks: {  
+                                    beginAtZero: true  
+                                }  
+                            }],  
+                            xAxes: [{  
+                                ticks: {  
+                                    autoSkip: false  
+                                }  
+                            }]  
+                        }  
+                    }  
+                }); 
