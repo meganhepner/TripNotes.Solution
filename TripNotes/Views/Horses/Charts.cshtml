@@ -105,6 +105,7 @@
 
 @section scripts{
     <script type="text/javascript">
+
       $(document).ready(function() {
 
       $('.btnTest').click(function getHorseData() {
@@ -118,10 +119,40 @@
         alldata.push(educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue);
         console.log(alldata);
         return alldata;
+        });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  });
+
+
+
+
+
   
 
+    </script>
+}
 
-  //For Bar Chart  
+ 
+    //For Bar Chart  
         var ctx = document.getElementById("myChart").getContext('2d');  
         ctx.height = 900;  
         var myChart = new Chart(ctx, {  
@@ -139,7 +170,7 @@
                 datasets: [{  
                     label: 'Monthly Expenses',  
                     //data: alldata,
-                    data: [educationValue, lodgingValue, foodingValue, travellingValue, communicationValue, othersValue],  
+                    data: [0, 10, 5, 2, 20, 30],  
                     backgroundColor: ["red", "blue", "green", "yellow", "pink", "brown"]  
                 }]  
             }, options: {  
@@ -159,16 +190,6 @@
                 }  
             }  
         }); 
-          });
-  });
-
-  
-
-    </script>
-}
-
- 
-  
   
                 //For Pie Chart  
                 var ctx1 = document.getElementById("myChartPie").getContext('2d');  
