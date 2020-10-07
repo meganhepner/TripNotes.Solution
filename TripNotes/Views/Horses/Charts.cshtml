@@ -6,33 +6,38 @@
 
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
-
+ @Html.Label("X Value : ") <input id="xValue" type="number" step="any" placeholder="Enter X-Value">
+ @Html.Label("Y Value : ") <input id="yValue" type="number" step="any" placeholder="Enter Y-Value">
+<button id="renderButton">Add DataPoints &amp; Render Chart</button>
 
 
 @section scripts{
-  <script type="text/javascript">
-      
-    $(document).ready(function(){
+    <script type="text/javascript">
+        window.onload = function() {
+            var dps = []; //dataPoints. 
 
-	  var chart = new CanvasJS.Chart("chartContainer", {
-		title:{
-			text: "My First Chart in CanvasJS"              
-		},
-		data: [              
-		{
-			// Change type to "doughnut", "line", "splineArea", etc.
-			type: "column",
-			dataPoints: [
-				{ label: "apple",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-				{ label: "grape",  y: 28  }
-			]
-		}
-		]
-	});
-	chart.render();
-});
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Accepting DataPoints from User Input"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dps
+                }]
+            });
+
+            function addDataPointsAndRender() {
+                xValue = Number(document.getElementById("xValue").value);
+                yValue = Number(document.getElementById("yValue").value);
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+                chart.render();
+            }
+
+            var renderButton = document.getElementById("renderButton");
+            renderButton.addEventListener("click", addDataPointsAndRender);
+        }
     </script>
 }
