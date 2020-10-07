@@ -13,7 +13,7 @@
       @Html.LabelFor(model => model.RaceDate)<br>
     </div>
     <div class="col-md-5 column">
-      @Html.TextBoxFor(model => model.RaceDate, new { @type = "date", @class="date"})<br>
+      @Html.TextBoxFor(model => model.RaceDate, new { @type = "date", @class="date", required="required"})<br>
     </div>
   </div>
 
@@ -22,7 +22,7 @@
         @Html.LabelFor(model => model.RaceLength)<br>
     </div>
     <div class="col-md-5 column">
-        @Html.TextBoxFor(model => model.RaceLength, new { @class="form-control length", required="required" })<br>
+        @Html.TextBoxFor(model => model.RaceLength, new { @type = "number", @class="form-control length", required="required" })<br>
     </div>
   </div>
 

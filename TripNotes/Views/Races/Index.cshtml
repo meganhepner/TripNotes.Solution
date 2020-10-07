@@ -19,6 +19,7 @@ else
     <p> 
       Find by date: @Html.TextBox("SearchString")
       <input type="submit" value="Search" />
+      <input type="button" value="Add New Race" onclick="location.href='@Url.Action("Create", "Races")'" />
     </p>
   }
   <table class="table">
@@ -51,5 +52,5 @@ else
   </table>
 }
 
-<p>@Html.ActionLink("Add new Race", "Create")</p>
+
 

@@ -18,7 +18,8 @@ else
   {
     <p> 
       Find by name: @Html.TextBox("SearchString")
-      <input type="submit" value="Search" />
+      <input type="submit" value="Search" class="input"/>
+      <input type="button" value="Add New Horse" onclick="location.href='@Url.Action("Create", "Horses")'" />
     </p>
   }
   <table class="table">
@@ -34,8 +35,7 @@ else
   </table>
 }
 
-<p>@Html.ActionLink("Add new Horse", "Create")</p>
-<p>@Html.ActionLink("Compare Paces", "ViewPace")</p>
+
 
 
 
