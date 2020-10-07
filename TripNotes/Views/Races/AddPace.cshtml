@@ -20,7 +20,7 @@ else
 {
   <h2>Horses :</h2>
 
-  @using(Html.BeginForm("AddRaceNotes", "Races")) 
+  @using(Html.BeginForm()) 
     {
       <div class="row">
         <div class="col-md-4 column">
@@ -56,7 +56,7 @@ else
 
           @foreach (var join in Model.Horses)
           {
-            <tr>
+            <tr class="BL">
               <td>
                 @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
                 @join.Horse.HorseName
@@ -86,7 +86,7 @@ else
 
         function getFPSData() {
           let alldata = [];
-              var raceLength = $(".raceLength").val();
+              var raceLength = parseInt($(".raceLength").val());
               var firstFraction = $(".firstFraction").val();
               var secondFraction = $(".secondFraction").val();
               var thirdFraction = $(".thirdFraction").val();
@@ -109,6 +109,8 @@ else
                   alldata.push(HorseRaceId, FPS1, FPS2, FPS3, EPace);
                   }
                 });
+          console.log(alldata);
+          debugger
           return alldata;
         };
 
@@ -132,7 +134,9 @@ else
         }
 
         function calcSprintEP(BL2, firstFraction, secondFraction) {
-          let T4 = (firstFraction + secondFraction);
+          let T4 = (parseInt(firstFraction) + parseInt(secondFraction));
+          console.log(T4);
+          debugger
           let EP = (2640 - (BL2 * 10)) / T4;
           return EP;
         }
@@ -156,7 +160,7 @@ else
         }
 
         function calcRouteEP(BL2, firstFraction, secondFraction) {
-          let T4 = (firstFraction + secondFraction);
+          let T4 = (parseInt(firstFraction) + parseInt(secondFraction));
           let EP = (3690 - (BL2 * 10)) / T4;
           return EP;
         }

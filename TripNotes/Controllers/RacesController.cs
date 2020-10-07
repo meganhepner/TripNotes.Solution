@@ -169,17 +169,6 @@ namespace TripNotes.Controllers
       return RedirectToAction("Index");
       }
 
-      [HttpPost]
-      public ActionResult AddRaceNotes(Race race)
-        {
-          var thisRace = _db.Races.FirstOrDefault(r => r.RaceId == race.RaceId);
-          thisRace.RaceNotes = race.RaceNotes;;
-          _db.SaveChanges();
-
-          return RedirectToAction("Index");
-
-        }
-
         public ActionResult AddPace(int id)
         {
           var thisRace = _db.Races
