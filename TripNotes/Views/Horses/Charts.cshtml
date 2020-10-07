@@ -156,16 +156,29 @@
         },
 
         // Configuration options go here
-          options: {               
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 18
+              }
+            },               
             scales: {  
-                      xAxes: [{  
-                        barPercentage: 0.5,
-                        ticks: {  
-                          min: 45
-                        }  
-                      }],  
-                    }
-                  }  
+              yAxes: [{
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18
+                }
+              }],
+              xAxes: [{  
+                ticks: {  
+                  fontColor: "black",
+                  fontSize: 18,
+                  min: 50
+                }  
+              }],  
+            }
+          }  
         });
 
       var ctx = document.getElementById('secFrac').getContext('2d');
