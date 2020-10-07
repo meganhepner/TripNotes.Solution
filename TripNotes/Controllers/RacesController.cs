@@ -25,7 +25,7 @@ namespace TripNotes.Controllers
       var races = from race in _db.Races select race;
       if(!string.IsNullOrEmpty(searchString))
       {
-        // races = races.Where(race => race.RaceDate.Contains(searchString));
+        races = races.Where(race => race.RaceDate.Contains(searchString));
       }
       switch (sortOrder)
       {

@@ -5,12 +5,12 @@
 }
 
 <h1>Add Pace<h1>
-<h3>@Html.Label("Race Date "): @Html.DisplayFor(model => model.RaceDate)</h3>
-<h3>@Html.DisplayFor(model => model.RaceLength)</h3>
-    @Html.HiddenFor(model => model.RaceLength, new { @class="raceLength" })
-<h3>@Html.DisplayFor(model => model.RaceClass)</h3>
-<h3>@Html.DisplayFor(model => model.RaceNotes)</h3>
 
+<h3>@Html.Label("Date "): @Html.DisplayFor(model => model.RaceDate)  
+    @Html.DisplayFor(model => model.RaceLength) @Html.Label("    Furlongs ") 
+    @Html.HiddenFor(model => model.RaceLength, new { @class="raceLength" })
+    @Html.Label("     Class "): @Html.DisplayFor(model => model.RaceClass)
+</h3>
 
   @if(@Model.Horses.Count == 0)
 {
@@ -36,43 +36,45 @@ else
           <input type="number" step="0.1" name="thirdFraction" class="thirdFraction">
         </div>
       </div>
-
+      <hr>
+      <div style="overflow-x:auto;">
         <table class="table">
-        <tr>
-          <th>
-            <li>Horse</li>
-          </th>
-          <th>
-            <label for="BL1">1 Call Beaten Lengths</label>
-          </th>
-          <th>
-            <label for="BL2">2 Call Beaten Lengths</label>
-          </th>
-          <th>
-            <label for="BL3">3 Call Beaten Lengths</label>
-          </th>
-        </tr>
-
-        @foreach (var join in Model.Horses)
-        {
           <tr>
-            <td>
-              @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-              @join.Horse.HorseName
-            </td>
-            <td>
-              <input type="number" step="0.1" name="BL1" class="BL1"><br>
-            </td>
-            <td>
-              <input type="number" step="0.1" name="BL2" class="BL2">
-            </td>
-            <td>
-              <input type="number" step="0.1" name="BL3" class="BL3"><br>
-            </td>
+            <th>
+              <li>Horse</li>
+            </th>
+            <th>
+              <label for="BL1">1 Call Beaten Lengths</label>
+            </th>
+            <th>
+              <label for="BL2">2 Call Beaten Lengths</label>
+            </th>
+            <th>
+              <label for="BL3">3 Call Beaten Lengths</label>
+            </th>
           </tr>
-        }
-        </table>
-        <input type="submit" id="btnSubmit" value="Calculate Pace Figures" />
+
+          @foreach (var join in Model.Horses)
+          {
+            <tr>
+              <td>
+                @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
+                @join.Horse.HorseName
+              </td>
+              <td>
+                <input type="number" step="0.1" name="BL1" class="BL1"><br>
+              </td>
+              <td>
+                <input type="number" step="0.1" name="BL2" class="BL2">
+              </td>
+              <td>
+                <input type="number" step="0.1" name="BL3" class="BL3"><br>
+              </td>
+            </tr>
+          }
+          </table>
+      </div>
+      <input type="submit" id="btnSubmit" value="Calculate Pace Figures" />
       }
     } 
 

@@ -22,34 +22,36 @@ else
       <input type="button" value="Add New Race" onclick="location.href='@Url.Action("Create", "Races")'" />
     </p>
   }
-  <table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Date Of Race", "Index", new { sortOrder = ViewBag.DateSortParm })
-        </th>
-        <th>
-          Class
-        </th>
-        <th>
-          Distance
-        </th>
-    </tr>
-    
-  @foreach (Race race in @Model)
-  {
-    <tr>
-      <td>
-        @Html.ActionLink($"{race.RaceDate}", "Details", new { id = race.RaceId})
-      </td>
-      <td>
-        @race.RaceClass
-      </td>
-      <td>
-        @race.RaceLength
-      </td>
-    </tr>
-  }
-  </table>
+  <div style="overflow-x:auto;">
+    <table class="table">
+      <tr>
+          <th>
+              @Html.ActionLink("Date Of Race", "Index", new { sortOrder = ViewBag.DateSortParm })
+          </th>
+          <th>
+            Class
+          </th>
+          <th>
+            Distance
+          </th>
+      </tr>
+      
+    @foreach (Race race in @Model)
+    {
+      <tr>
+        <td>
+          @Html.ActionLink($"{race.RaceDate}", "Details", new { id = race.RaceId})
+        </td>
+        <td>
+          @race.RaceClass
+        </td>
+        <td>
+          @race.RaceLength
+        </td>
+      </tr>
+    }
+    </table>
+  </div>
 }
 
 

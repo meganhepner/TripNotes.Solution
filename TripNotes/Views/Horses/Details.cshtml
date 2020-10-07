@@ -15,59 +15,62 @@
   <p>No records of races in which this horse has been entered</p>
 }
 else
-{
-  <table class="table">
-    <tr>
-        <th>
-            Race Date
-        </th>
-        <th>
-            Race Comments
-        </th>
-        <th>
-            Horse Comments
-        </th>
-        <th>
-            Star
-        </th>
-        <th>
-            FPS First Fraction
-        </th>
-        <th>
-            FPS Second Fraction
-        </th>
-        <th>
-            FPS Third Fraction
-        </th>
-    </tr>
+{  
+  <div style="overflow-x:auto;">
+    <table class="table">
+      <tr>
+          <th>
+              Race Date
+          </th>
+          <th>
+              Race Comments
+          </th>
+          <th>
+              Horse Comments
+          </th>
+          <th>
+              Rating
+          </th>
+          <th>
+              FPS First Fraction
+          </th>
+          <th>
+              FPS Second Fraction
+          </th>
+          <th>
+              FPS Third Fraction
+          </th>
+      </tr>
+      
+    @foreach (var join in Model.Races)
+    {
     
-  @foreach (var join in Model.Races)
-  {
-    <tr>
-      <td>
-        @join.Race.RaceDate
+      <tr>
+        <td>
+          @join.Race.RaceDate
+          </td>
+        <td>
+          @join.Race.RaceNotes
         </td>
-      <td>
-        @join.Race.RaceNotes
-      </td>
-      <td>
-        @join.HorseNotes
-      </td>
-      <td>
-        @join.HorsePerformance
-      </td>
-      <td>
-        @join.FirstFR
-      </td>
-      <td>
-        @join.SecondFR
-      </td>
-      <td>
-        @join.ThirdFR
-      </td>
-    </tr>
-  }
-  </table>
+        <td>
+          @join.HorseNotes
+        </td>
+        <td>
+          @join.HorsePerformance
+        </td>
+        <td>
+          @join.FirstFR
+        </td>
+        <td>
+          @join.SecondFR
+        </td>
+        <td>
+          @join.ThirdFR
+        </td>
+      </tr>
+    }
+    </table>
+  </div>
 }
 
 <p>@Html.ActionLink("Return To Horse List", "Index")</p>
