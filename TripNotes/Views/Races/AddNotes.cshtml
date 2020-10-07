@@ -60,35 +60,6 @@ else
   <input type="submit" id="btnSubmit" value="Add Notes" />      
   <input type="button" value="Return To Race List" onclick="location.href='@Url.Action("Index", "Races")'" />
 
-
-
-
-@* 
-      <ul>
-        <div class ="notes">
-          @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-          <div class="row">
-            <div class="col-md-4 column">
-              <li>@join.Horse.HorseName</li>
-            </div>
-            <div class="col-md-4 column">
-              <label for="horseNotes">Notes</label>
-              <input type="text" name="horseNotes" class="horseNotes"><br>
-            </div>
-            <div class="col-md-4 column">
-              <label for="horsePerformance">Performance</label>
-              <input type="text" name="horsePerformance" class="horsePerformance" value="0"><br>
-            </div>
-        </div>
-      </ul>
-      }
-   
-    }
-
-
-
-} *@
-
   @section scripts{
     <script type="text/javascript">
       $(document).ready(function(){

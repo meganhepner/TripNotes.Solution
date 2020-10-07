@@ -80,40 +80,6 @@ else
     } 
 
 
-
-@* 
-
-else
-{
-  <h2>Horses :</h2>
-  <ul>
-  @using(Html.BeginForm()) 
-    {
-
-      @foreach(var join in Model.Horses)
-      { 
-      <div class ="BL">
-        @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
-
-        <li>@join.Horse.HorseName</li>
-
-        <label for="BL1">First Call Beaten Lengths</label>
-        <input type="number" step="0.1" name="BL1" class="BL1"><br>
-        <p>If horse was in lead at first call, enter 0 for beaten lengths. Otherwise, enter how many lengths the horse was behind the pace horse.</p>
-        <label for="BL2">Second Call Beaten Lengths</label>
-        <input type="number" step="0.1" name="BL2" class="BL2"><br>
-        <label for="BL3">Third Call Beaten Lengths</label>
-        <input type="number" step="0.1" name="BL3" class="BL3"><br>
-      </div>
-      }
-      <input type="submit" id="btnSubmit" value="Calculate Pace Figures" /><br>
-    }
-
-      <button type="button" id="test">Test</button>
-
-</ul>
-} *@
-
   @section scripts {
     <script type="text/javascript">
       $(document).ready(function() {

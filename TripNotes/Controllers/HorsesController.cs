@@ -102,5 +102,11 @@ namespace TripNotes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    
+    public ActionResult Charts()
+    {
+      return View();
+    } 
   }
 }
