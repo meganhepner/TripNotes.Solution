@@ -56,6 +56,7 @@
                                 </tr> 
                                 <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
                                 <button type="button" class="btnTest">Display Charts</button>
+                                <input type="button" value="Return To Horse List" onclick="location.href='@Url.Action("Index", "Horses")'" /> 
                                 <br>
                                 <br>
                             </tbody>  
@@ -129,33 +130,20 @@
         var FPS3 = fps3Array();  
         var ePace = ePaceArray();  
         var avgPace = avgPaceArray();  
-        console.log(horseName);
-        console.log(FPS1);
-        console.log(FPS2);
-        console.log(FPS3);
-        console.log(ePace);
-        console.log(avgPace);
 
-        
         var ctx = document.getElementById('firstFrac').getContext('2d');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'horizontalBar',
-        height: "230px",  
-        width: "300px",    
-
-        // The data for our dataset
         data: {
             labels: horseName,
             datasets: [{
                 label: 'Feet Per Second First Call',
                 backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
+                order: 1,
                 data: FPS1
             }]
         },
-
-        // Configuration options go here
           options: {
             legend: {
               labels: {
@@ -181,89 +169,157 @@
           }  
         });
 
-      var ctx = document.getElementById('secFrac').getContext('2d');
+  var ctx = document.getElementById('secFrac').getContext('2d');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'horizontalBar',
-        autoSkip: false,  
-
-        // The data for our dataset
         data: {
             labels: horseName,
             datasets: [{
                 label: 'Feet Per Second Second Call',
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
+                order: 1,
                 data: FPS1
             }]
         },
-
-        // Configuration options go here
-        options: {}
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 18
+              }
+            },               
+            scales: {  
+              yAxes: [{
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18
+                }
+              }],
+              xAxes: [{  
+                ticks: {  
+                  fontColor: "black",
+                  fontSize: 18,
+                  min: 50
+                }  
+              }],  
+            }
+          }  
         });
 
       var ctx = document.getElementById('thirdFrac').getContext('2d');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'horizontalBar',
-        autoSkip: false,  
-
-        // The data for our dataset
         data: {
             labels: horseName,
             datasets: [{
                 label: 'Feet Per Second Third Call',
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
+                order: 1,
                 data: FPS1
             }]
         },
-
-        // Configuration options go here
-
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 18
+              }
+            },               
+            scales: {  
+              yAxes: [{
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18
+                }
+              }],
+              xAxes: [{  
+                ticks: {  
+                  fontColor: "black",
+                  fontSize: 18,
+                  min: 50
+                }  
+              }],  
+            }
+          }  
         });
 
-      var ctx = document.getElementById('earlyPace').getContext('2d');
+    var ctx = document.getElementById('earlyPace').getContext('2d');
         var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'horizontalBar',
-        autoSkip: false,  
-
-        // The data for our dataset
         data: {
             labels: horseName,
             datasets: [{
                 label: 'Early Pace',
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
+                order: 1,
                 data: FPS1
             }]
         },
-
-        // Configuration options go here
-        options: {}
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 18
+              }
+            },               
+            scales: {  
+              yAxes: [{
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18
+                }
+              }],
+              xAxes: [{  
+                ticks: {  
+                  fontColor: "black",
+                  fontSize: 18,
+                  min: 50
+                }  
+              }],  
+            }
+          }  
         });
-  
+
         var ctx = document.getElementById('averagePace').getContext('2d');
-          var chart = new Chart(ctx, {
-          // The type of chart we want to create
-          type: 'horizontalBar',
-          autoSkip: false,  
-
-          // The data for our dataset
-          data: {
-              labels: horseName,
-              datasets: [{
-                  label: 'Average Pace',
-                  backgroundColor: 'rgb(255, 99, 132)',
-                  borderColor: 'rgb(255, 99, 132)',
-                  data: FPS1
-              }]
-          },
-
-          // Configuration options go here
-
-          });
+        var chart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: horseName,
+            datasets: [{
+                label: 'Average Pace',
+                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
+                borderColor: 'rgb(255, 99, 132)',
+                order: 1,
+                data: FPS1
+            }]
+        },
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 18
+              }
+            },               
+            scales: {  
+              yAxes: [{
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18
+                }
+              }],
+              xAxes: [{  
+                ticks: {  
+                  fontColor: "black",
+                  fontSize: 18,
+                  min: 50
+                }  
+              }],  
+            }
+          }  
+        });
 
         function horseNameArray() {
         var data = [];
@@ -322,33 +378,3 @@
     });
   </script>
 }
-
- 
-     //For Bar Chart  
-        var ctx = document.getElementById("myChart").getContext('2d');  
-        ctx.height = 900;  
-        var myChart = new Chart(ctx, {  
-            type: 'bar',  
-            height: "230px",  
-            width: "300px",  
-            autoSkip: false,  
-            responsive: false,  
-            animation: false,  
-            showDatapoints: true,  
-            legend: { position: 'bottom' },  
-            data: {  
-                //labels: ["M", "T", "W", "T", "F", "S", "S"],  
-                labels: ["Education", "Lodging", "Fooding", "Travelling", "Communication", "Others"],  
-                datasets: [{  
-                    label: 'Monthly Expenses',  
-                    //data: alldata,
-                    data: [0, 10, 5, 2, 20, 30],  
-                    backgroundColor: ["red", "blue", "green", "yellow", "pink", "brown"]  
-                }]  
-            }, options: {  
-                events: ['click'],  
-                scaleShowValues: true,  
- 
-            }  
-        }); 
-  

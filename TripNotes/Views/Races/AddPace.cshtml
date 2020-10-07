@@ -99,12 +99,14 @@ else
                 let FPS1 = calcSprint1Fr(BL1, firstFraction).toFixed(2);
                 let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction).toFixed(2);
                 let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength).toFixed(2);
-                alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
+                let EPace = calcSprintEP(BL2, firstFraction, secondFraction);
+                alldata.push(HorseRaceId, FPS1, FPS2, FPS3, EPace);
                 } else if (raceLength >= 8) {
                   let FPS1 = calcRoute1Fr (BL1, firstFraction).toFixed(2);
                   let FPS2 = calcRoute2Fr (BL1, BL2, secondFraction).toFixed(2);
                   let FPS3 = calcRoute3Fr (BL2, BL3, thirdFraction, raceLength).toFixed(2);
-                  alldata.push(HorseRaceId, FPS1, FPS2, FPS3);
+                  let EPace = calcRouteEP();
+                  alldata.push(HorseRaceId, FPS1, FPS2, FPS3, EPace);
                   }
                 });
           return alldata;
@@ -124,11 +126,15 @@ else
 
         function calcSprint3Fr(BL2, BL3, thirdFraction, raceLength) {
           let change = (BL2 - BL3);
-          console.log(change);
           let distance = calcDistance(raceLength);
-          console.log(distance);
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
+        }
+
+        function calcSprintEP(BL2, firstFraction, secondFraction) {
+          let T4 = (firstFraction + secondFraction);
+          let EP = (2640 - (BL2 * 10)) / T4;
+          return EP;
         }
 
         function calcRoute1Fr(BL1, firstFraction) {
@@ -147,6 +153,12 @@ else
           let distance = calcDistance(raceLength);
           let FPS = (distance + (change * 10)) / thirdFraction;
           return FPS;
+        }
+
+        function calcRouteEP(BL2, firstFraction, secondFraction) {
+          let T4 = (firstFraction + secondFraction);
+          let EP = (3690 - (BL2 * 10)) / T4;
+          return EP;
         }
 
         function calcDistance(raceLength) {

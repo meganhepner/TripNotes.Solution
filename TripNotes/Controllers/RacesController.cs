@@ -206,11 +206,13 @@ namespace TripNotes.Controllers
                 double first = Math.Round(float.Parse(HorsePaceList[1]), 2);
                 double second = Math.Round(float.Parse(HorsePaceList[2]), 2);
                 double third = Math.Round(float.Parse(HorsePaceList[3]), 2);
+                double early = Math.Round(float.Parse(HorsePaceList[4]), 2);
                 var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
                 thisHorseRace.FirstFR = first;
                 thisHorseRace.SecondFR = second;
                 thisHorseRace.ThirdFR = third;
-                HorsePaceList.RemoveRange(0, 4);
+                thisHorseRace.EP = early;
+                HorsePaceList.RemoveRange(0, 5);
                 _db.SaveChanges();
           }
         return RedirectToAction("Index");
