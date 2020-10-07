@@ -16,4 +16,6 @@
   @Html.DropDownList("HorseId")
 
   <input type="submit" value="Save" />
+  <input type="button" value="Return To Race List" onclick="location.href='@Url.Action("Index", "Races")'" />
+
 }

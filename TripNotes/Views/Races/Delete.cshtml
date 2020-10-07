@@ -10,6 +10,6 @@
 @using (Html.BeginForm())
 {
   <input type="submit" value="Delete" />
+  <input type="button" value="Back To Race Details" onclick="location.href='@Url.Action("Details", "Races", new { id = Model.RaceId })'" /> 
 }
 
-<p>@Html.ActionLink("Back To Race Details", "Details", new { id = Model.RaceId })</p>

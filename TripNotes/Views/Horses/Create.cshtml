@@ -12,8 +12,8 @@
   @Html.TextBoxFor(model => model.HorseName, new {@class="form-control", required="required"})
   <br>
 
-  <input type="submit" value="Add Horse" /><br>
+  <input type="submit" value="Add Horse" />
+  <input type="button" value="Return To Horse List" onclick="location.href='@Url.Action("Index", "Horses")'" /> 
 }
 
-<p>@Html.ActionLink("Return To Horse List", "Index")</p>
-<p>@Html.ActionLink("Return To Race", "Create", "Race")</p>
+

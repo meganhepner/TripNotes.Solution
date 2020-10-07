@@ -35,7 +35,7 @@
     </div>
   </div>
   
-  <input class="btnAdd btn btn-default" type="button" name="name" value="Add A Horse To This Race" />
+  <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
 
   <div class="row">
     <div class="col-md-5 column">
@@ -45,10 +45,11 @@
     <div class="col-md-5 column" id="horseList"></div>
   </div>  
   
-    <input type="submit" id="btnSubmit" value="Add Race" /><br>
+    <input type="submit" id="btnSubmit" value="Add Race" />
+    <input type="button" value="Return To Race List" onclick="location.href='@Url.Action("Index", "Races")'" /> 
+
 }
 
-<p>@Html.ActionLink("Back To List of Races", "Index")</p> 
 
   <script id="template" type="text/template"> 
     <div class="row" >

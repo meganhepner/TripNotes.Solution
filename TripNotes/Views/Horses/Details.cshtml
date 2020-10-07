@@ -72,10 +72,10 @@ else
     </table>
   </div>
 }
+  <input type="button" value="Return To Horse List" onclick="location.href='@Url.Action("Index", "Horses")'" /> 
+  <input type="button" value="Edit Horse" onclick="location.href='@Url.Action("Edit", "Horses", new { id = Model.HorseId })'" /> 
+  <input type="button" value="Delete Horse" onclick="location.href='@Url.Action("Delete", "Horses", new { id = Model.HorseId })'" /> 
 
-<p>@Html.ActionLink("Return To Horse List", "Index")</p>
-<p>@Html.ActionLink("Edit Horse", "Edit", new { id = Model.HorseId })</p>
-<p>@Html.ActionLink("Delete Horse", "Delete", new { id = Model.HorseId })</p> 
 
 
 

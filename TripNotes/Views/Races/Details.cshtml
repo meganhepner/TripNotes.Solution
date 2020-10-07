@@ -30,11 +30,13 @@ else
   }
 </ul>
 }
-  <p>@Html.ActionLink("Add TripNotes for this Race", "AddNotes", new { id = Model.RaceId })</p>
-  <p>@Html.ActionLink("Add Pace Calculations for this Race", "AddPace", new { id = Model.RaceId })</p>
-  <p>@Html.ActionLink("Add Horse To Race", "AddHorse", new { id = Model.RaceId })</p>
-  <p>@Html.ActionLink("Edit Race", "Edit", new { id = Model.RaceId })</p>
-  <p>@Html.ActionLink("Delete Race", "Delete", new { id = Model.RaceId })</p> 
+<input type="button" value="Add TripNotes for this Race" onclick="location.href='@Url.Action("AddNotes", "Races", new { id = Model.RaceId })'" /> 
+<input type="button" value="Add Pace Calculations for this Race" onclick="location.href='@Url.Action("AddPace", "Races", new { id = Model.RaceId })'" /> 
+<input type="button" value="Add Horse To Race" onclick="location.href='@Url.Action("AddHorse", "Races", new { id = Model.RaceId })'" /> 
+<input type="button" value="Edit Race" onclick="location.href='@Url.Action("Edit", "Races", new { id = Model.RaceId })'" /> 
+<input type="button" value="Delete Race" onclick="location.href='@Url.Action("Delete", "Races", new { id = Model.RaceId })'" /> 
+
+
 
 
 

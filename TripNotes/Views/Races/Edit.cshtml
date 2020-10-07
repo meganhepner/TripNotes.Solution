@@ -21,11 +21,12 @@
   <br>
   @Html.LabelFor(model => model.RaceNotes)
   @Html.EditorFor(model => model.RaceNotes, new {@class="form-control", required="required"})
-
+  <br>
   @Html.Label("Add Horse To Race")
   @Html.DropDownList("HorseId")
+  <br>
 
   <input type="submit" value="Save" />
+  <input type="button" value="Back To Race Details" onclick="location.href='@Url.Action("Details", "Races", new { id = Model.RaceId })'" /> 
 }
 
-<p>@Html.ActionLink("Back To Race Details", "Details", new { id = Model.RaceId })</p> 

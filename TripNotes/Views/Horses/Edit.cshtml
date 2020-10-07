@@ -15,6 +15,6 @@
   <br>
 
   <input type="submit" value="Save" />
+  <input type="button" value="Back To Horse Details" onclick="location.href='@Url.Action("Details", "Horses", new { id = Model.HorseId })'" /> 
 }
 
-<p>@Html.ActionLink("Back To Horse Details", "Details", new { id = Model.HorseId })</p> 
