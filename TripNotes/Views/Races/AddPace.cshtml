@@ -99,18 +99,16 @@ else
                 let FPS1 = calcSprint1Fr(BL1, firstFraction).toFixed(2);
                 let FPS2 = calcSprint2Fr(BL1, BL2, secondFraction).toFixed(2);
                 let FPS3 = calcSprint3Fr(BL2, BL3, thirdFraction, raceLength).toFixed(2);
-                let EPace = calcSprintEP(BL2, firstFraction, secondFraction);
+                let EPace = calcSprintEP(BL2, firstFraction, secondFraction).toFixed(2);
                 alldata.push(HorseRaceId, FPS1, FPS2, FPS3, EPace);
                 } else if (raceLength >= 8) {
                   let FPS1 = calcRoute1Fr (BL1, firstFraction).toFixed(2);
                   let FPS2 = calcRoute2Fr (BL1, BL2, secondFraction).toFixed(2);
                   let FPS3 = calcRoute3Fr (BL2, BL3, thirdFraction, raceLength).toFixed(2);
-                  let EPace = calcRouteEP();
+                  let EPace = calcRouteEP().toFixed(2);
                   alldata.push(HorseRaceId, FPS1, FPS2, FPS3, EPace);
                   }
                 });
-          console.log(alldata);
-          debugger
           return alldata;
         };
 
@@ -121,7 +119,6 @@ else
 
         function calcSprint2Fr(BL1, BL2, secFraction) {
           let change = (BL1 - BL2);
-          console.log(change);
           let FPS = (1320 + (change * 10)) / secFraction;
           return FPS;
         }
@@ -134,9 +131,7 @@ else
         }
 
         function calcSprintEP(BL2, firstFraction, secondFraction) {
-          let T4 = (parseInt(firstFraction) + parseInt(secondFraction));
-          console.log(T4);
-          debugger
+          let T4 = (parseFloat(firstFraction) + parseFloat(secondFraction));
           let EP = (2640 - (BL2 * 10)) / T4;
           return EP;
         }
@@ -160,7 +155,7 @@ else
         }
 
         function calcRouteEP(BL2, firstFraction, secondFraction) {
-          let T4 = (parseInt(firstFraction) + parseInt(secondFraction));
+          let T4 = (parseFloat(firstFraction) + parseFloat(secondFraction));
           let EP = (3690 - (BL2 * 10)) / T4;
           return EP;
         }
@@ -187,15 +182,12 @@ else
           } else if (length === 9.5) {
             distance = 2310
           }
-          console.log(distance);
           return distance;
         }
 
         $('#btnSubmit').click(function () {
           var pace = (getFPSData());
-          var commaSeparatedPace = pace.toString(); 
-          console.log(commaSeparatedPace);  
-          debugger       
+          var commaSeparatedPace = pace.toString();   
           $.ajax({
               url: '/Races/AddPace',
               type: 'POST',

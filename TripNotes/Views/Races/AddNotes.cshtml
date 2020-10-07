@@ -71,7 +71,6 @@ else
               var HorseNotes = $(this).find(".horseNotes").val();
               var HandledHorseNotes = HorseNotes.split(",").join("");
               var HorsePerformance = $(this).find(".horsePerformance").val();
-              console.log(HandledHorseNotes)
               alldata.push(HorseRaceId, HandledHorseNotes, HorsePerformance);
             });
           return alldata;
@@ -80,8 +79,6 @@ else
         $('#btnSubmit').click(function () {
           var race = (getAllHorseRaceData());
           var commaSeparatedHorseRace = race.toString();
-          console.log(commaSeparatedHorseRace);
-          debugger
           $.ajax({
               url: '/Races/AddNotes',
               type: 'POST',
