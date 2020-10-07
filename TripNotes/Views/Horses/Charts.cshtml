@@ -3,16 +3,111 @@
 @{
   Layout = "_Layout";
 }
-
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-
- @Html.Label("X Value : ") <input id="xValue" type="number" step="any" placeholder="Enter X-Value">
- @Html.Label("Y Value : ") <input id="yValue" type="number" step="any" placeholder="Enter Y-Value">
-<button id="renderButton">Add DataPoints &amp; Render Chart</button>
-
+<div class="form-horizontal">  
+        <div class="row">  
+            <div class="col-md-12">  
+                <div class="form-horizontal">  
+                    <div class="row">  
+                        <div class="col-md-12">  
+                            <div class="col-md-4">  
+                                <div class="form-group">  
+                                    <div class="col-md-8">  
+                                        <label class="control-label">Enter Your Expenses Below</label>  
+                                    </div>  
+                                </div>  
+                            </div>  
+  
+                        </div>  
+                    </div>  
+  
+                    <div class="row">  
+                        <div class="col-md-12">  
+                            <div class="col-md-12">  
+                                <div class="form-group">  
+                                    <div class="col-md-12">  
+                                        <table class="table table-bordered table-responsive">  
+                                            <thead>  
+                                                <tr>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Education</label>  
+                                                    </th>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Lodging</label>  
+                                                    </th>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Fooding</label>  
+                                                    </th>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Travelling</label>  
+                                                    </th>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Communication</label>  
+                                                    </th>  
+                                                    <th scope="col">  
+                                                        <label class="control-label">Others</label>  
+                                                    </th>  
+                                                </tr>  
+                                            </thead>  
+                                            <tbody>  
+                                                <tr>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtEducation" />  
+                                                    </th>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtLodging" />  
+                                                    </th>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtFooding" />  
+                                                    </th>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtTravelling" />  
+                                                    </th>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtCommunication" />  
+                                                    </th>  
+                                                    <th scope="row">  
+                                                        <input type="text" class="form-control" id="txtOthers" />  
+                                                    </th>  
+                                                </tr>  
+                                                <tr>  
+                                                    <th scope="row" colspan="2">  
+                                                        <div id="chartContainerPie" class="containerPie">  
+                                                            <canvas id="myChart"> </canvas>  
+                                                        </div>  
+                                                    </th>  
+                                                    <th scope="row" colspan="2">  
+                                                        <div id="chartContainer" class="container">  
+                                                            <canvas id="myChartPie"> </canvas>  
+                                                        </div>  
+                                                    </th>  
+                                                    <th scope="row" colspan="2">  
+                                                        <div id="chartContainerLine" class="containerLine">  
+                                                            <canvas id="myChartLine"> </canvas>  
+                                                        </div>  
+                                                    </th>  
+                                                </tr>  
+  
+                                            </tbody>  
+                                        </table>  
+                                    </div>  
+                                </div>  
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+@* <div class="div-1">
+  <p> does it need a p tag ? </p>
+  @Html.Label("X Value : ") <input id="xValue" type="number" step="any" placeholder="Enter X-Value">
+  @Html.Label("Y Value : ") <input id="yValue" type="number" step="any" placeholder="Enter Y-Value">
+  <button id="renderButton">Add DataPoints &amp; Render Chart</button>
+</div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div> *@
 
 @section scripts{
-    <script type="text/javascript">
+    @* <script type="text/javascript">
         window.onload = function() {
             var dps = []; //dataPoints. 
 
@@ -39,5 +134,5 @@
             var renderButton = document.getElementById("renderButton");
             renderButton.addEventListener("click", addDataPointsAndRender);
         }
-    </script>
+    </script> *@
 }
