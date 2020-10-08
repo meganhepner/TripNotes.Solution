@@ -50,9 +50,6 @@
                                     <th scope="row">  
                                         <input type="text" class="form-control EPace" />  
                                     </th>  
-                                    <th scope="row">  
-                                        <input type="text" class="form-control AvgPace" />  
-                                    </th>  
                                 </tr> 
                                 <input class="btnAdd" type="button" name="name" value="Add A Horse To This Race" />
                                 <button type="button" class="btnTest">Display Charts</button>
@@ -83,12 +80,6 @@
 <div class="containerChart">  
       <canvas id="earlyPace"> </canvas>  
 </div> 
-
-<div class="containerChart">   
-      <canvas id="averagePace"> </canvas>  
-</div> 
-
-
 
 
   <script id="template" type="text/template"> 
@@ -252,44 +243,6 @@
             labels: horseName,
             datasets: [{
                 label: 'Early Pace',
-                backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
-                borderColor: 'rgb(255, 99, 132)',
-                order: 1,
-                data: FPS1
-            }]
-        },
-          options: {
-            legend: {
-              labels: {
-                fontColor: "black",
-                fontSize: 18
-              }
-            },               
-            scales: {  
-              yAxes: [{
-                ticks: {
-                  fontColor: "black",
-                  fontSize: 18
-                }
-              }],
-              xAxes: [{  
-                ticks: {  
-                  fontColor: "black",
-                  fontSize: 18,
-                  min: 50
-                }  
-              }],  
-            }
-          }  
-        });
-
-        var ctx = document.getElementById('averagePace').getContext('2d');
-        var chart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-            labels: horseName,
-            datasets: [{
-                label: 'Average Pace',
                 backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
                 order: 1,

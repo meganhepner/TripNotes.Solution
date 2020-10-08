@@ -7,7 +7,7 @@
 
 <h1>Race</h1>
 <hr/>
-
+<input type="button" value="Add New Race" onclick="location.href='@Url.Action("Create", "Races")'" />
 @if (@Model.Count == 0)
 {
   <h5>There are no races in the system</h5>
@@ -19,7 +19,6 @@ else
     <p> 
       Find by date: @Html.TextBox("SearchString")
       <input type="submit" value="Search" />
-      <input type="button" value="Add New Race" onclick="location.href='@Url.Action("Create", "Races")'" />
     </p>
   }
   <div style="overflow-x:auto;">
