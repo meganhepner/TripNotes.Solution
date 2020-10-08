@@ -17,11 +17,11 @@ else
 {
   <h2>Horses :</h2>
 
-  @using(Html.BeginForm("AddRaceNotes", "Races")) 
+  @using(Html.BeginForm()) 
     {
-      @Html.HiddenFor(model => model.RaceId)
+      @Html.HiddenFor(model => model.RaceId, new { @class="raceId" })
       @Html.LabelFor(model => model.RaceNotes)
-      @Html.EditorFor(model => model.RaceNotes)
+      @Html.TextBoxFor(model => model.RaceNotes, new { @class="raceNotes"})
       <hr>
         <div style="overflow-x:auto;">
         <table class="table">
@@ -39,7 +39,7 @@ else
 
           @foreach (var join in Model.Horses)
           {
-            <tr>
+            <tr class="notes">
               <td>
                 @Html.Hidden("joinId", @join.HorseRaceId, new { @class="joinId" })
                 @join.Horse.HorseName
@@ -55,10 +55,11 @@ else
           }
         </table>
         </div>
+      <input type="submit" id="btnSubmit" value="Add Notes" />      
+      <input type="button" value="Return To Race List" onclick="location.href='@Url.Action("Index", "Races")'" />
     }
 }
-  <input type="submit" id="btnSubmit" value="Add Notes" />      
-  <input type="button" value="Return To Race List" onclick="location.href='@Url.Action("Index", "Races")'" />
+
 
   @section scripts{
     <script type="text/javascript">
@@ -78,11 +79,13 @@ else
 
         $('#btnSubmit').click(function () {
           var race = (getAllHorseRaceData());
+          var raceNotes = $(".raceNotes").val();
+          var raceId = $(".raceId").val();
           var commaSeparatedHorseRace = race.toString();
           $.ajax({
               url: '/Races/AddNotes',
               type: 'POST',
-              data: { horseRace: commaSeparatedHorseRace },
+              data: { horseRace: commaSeparatedHorseRace, raceNotes : raceNotes, raceId : raceId },
         });
       }); 
     });

@@ -146,7 +146,7 @@ namespace TripNotes.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddNotes(string horseRace)
+    public ActionResult AddNotes(string horseRace, string raceNotes, int raceId)
       {
         List<string> HorseRaceList = new List<string>{};
         if(String.IsNullOrEmpty(horseRace))
@@ -156,17 +156,19 @@ namespace TripNotes.Controllers
           HorseRaceList = horseRace.Split(",").ToList();
         }
 
-            for (int i = 0; i < HorseRaceList.Count; i++) {
-              int id = int.Parse(HorseRaceList[0]);
-              string horseNotes = HorseRaceList[1].ToString();
-              int horsePerformance = int.Parse(HorseRaceList[2]);
-              var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
-              thisHorseRace.HorseNotes = horseNotes;
-              thisHorseRace.HorsePerformance = horsePerformance;
-              HorseRaceList.RemoveRange(0, 3);
-              _db.SaveChanges();
+        for (int i = 0; i < HorseRaceList.Count; i++) {
+          int id = int.Parse(HorseRaceList[0]);
+          string horseNotes = HorseRaceList[1].ToString();
+          int horsePerformance = int.Parse(HorseRaceList[2]);
+          var thisHorseRace = _db.HorseRace.Single(m => m.HorseRaceId == id);
+          thisHorseRace.HorseNotes = horseNotes;
+          thisHorseRace.HorsePerformance = horsePerformance;
+          HorseRaceList.RemoveRange(0, 3);
         }
-      return RedirectToAction("Index");
+        var thisRace = _db.Races.Single(m => m.RaceId == raceId);
+        thisRace.RaceNotes = raceNotes;
+        _db.SaveChanges();
+        return RedirectToAction("Index");
       }
 
         public ActionResult AddPace(int id)
@@ -188,8 +190,6 @@ namespace TripNotes.Controllers
           } else {
             HorsePaceList = horsePace.Split(",").ToList();
           }
-          Console.WriteLine(horsePace);
-
               for (int i = 0; i < HorsePaceList.Count; i++) {
                 int id = int.Parse(HorsePaceList[0]);
                 double first = Math.Round(float.Parse(HorsePaceList[1]), 2);
@@ -202,8 +202,8 @@ namespace TripNotes.Controllers
                 thisHorseRace.ThirdFR = third;
                 thisHorseRace.EP = early;
                 HorsePaceList.RemoveRange(0, 5);
-                _db.SaveChanges();
           }
+        _db.SaveChanges();
         return RedirectToAction("Index");
         }
 
