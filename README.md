@@ -4,7 +4,8 @@
 
 ## <h2 align = "center"> About
 
-<p align = "center"> This application allows handicappers to save tripnotes for horses in a race and search those notes by horse.
+<p align = "center"> This application allows handicappers to save tripnotes for horses in a race and search those notes by horse. It also calculates Brohamer's Feet Per Second calculations and Early Pace.
+![Splash Page](/TripNotes/wwwroot/img/test.gif)
 
 ## **✅REQUIREMENTS**
 * Install [Git v2.62.2+](https://git-scm.com/downloads/)

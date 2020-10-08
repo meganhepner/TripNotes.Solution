@@ -28,9 +28,6 @@
                                     <th scope="col">  
                                         <label class="control-label">E Pace</label>  
                                     </th>  
-                                    <th scope="col">  
-                                        <label class="control-label">Avg Pace</label>  
-                                    </th>  
                                 </tr>  
                             </thead>  
                             <tbody>  
@@ -83,7 +80,7 @@
 
 
   <script id="template" type="text/template"> 
-       <tr>  
+      <tr>  
         <th scope="row">  
             <input type="text" class="form-control horseName" />  
         </th>  
@@ -98,9 +95,6 @@
         </th>  
         <th scope="row">  
             <input type="text" class="form-control EPace" />  
-        </th>  
-        <th scope="row">  
-            <input type="text" class="form-control AvgPace" />  
         </th>  
     </tr>  
   </script>
@@ -120,7 +114,6 @@
         var FPS2 = fps2Array();  
         var FPS3 = fps3Array();  
         var ePace = ePaceArray();  
-        var avgPace = avgPaceArray();  
 
         var ctx = document.getElementById('firstFrac').getContext('2d');
         var chart = new Chart(ctx, {
@@ -153,7 +146,7 @@
                 ticks: {  
                   fontColor: "black",
                   fontSize: 18,
-                  min: 50
+                  min: 48
                 }  
               }],  
             }
@@ -170,7 +163,7 @@
                 backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
                 order: 1,
-                data: FPS1
+                data: FPS2
             }]
         },
           options: {
@@ -191,7 +184,7 @@
                 ticks: {  
                   fontColor: "black",
                   fontSize: 18,
-                  min: 50
+                  min: 48
                 }  
               }],  
             }
@@ -208,7 +201,7 @@
                 backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
                 order: 1,
-                data: FPS1
+                data: FPS3
             }]
         },
           options: {
@@ -229,7 +222,7 @@
                 ticks: {  
                   fontColor: "black",
                   fontSize: 18,
-                  min: 50
+                  min: 48
                 }  
               }],  
             }
@@ -246,7 +239,7 @@
                 backgroundColor: ["#845EC2", "#2C73D2", "#D65DB1","#FF6F91","#FF9671","#008F7A","#FFC75F", "#F9F871"],
                 borderColor: 'rgb(255, 99, 132)',
                 order: 1,
-                data: FPS1
+                data: ePace
             }]
         },
           options: {
@@ -267,7 +260,7 @@
                 ticks: {  
                   fontColor: "black",
                   fontSize: 18,
-                  min: 50
+                  min: 48
                 }  
               }],  
             }
